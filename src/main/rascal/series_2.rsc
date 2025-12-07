@@ -25,18 +25,14 @@ int getAllClonePairs(loc projectLocation){
     // loop over the files and search for duplicates of each lines
     for (loc f <- javaFiles){
         str src = readFile(f);
-        // the commented code doesn't work how I want it to (filter out block comments)
-        // Tree tree = parse(#CompilationUnit, src);
-        // str withoutComments = unparse(tree);
+        src = removeMultiLineComments(src);
         list[str] lines = split("\n", src);
         // filter out comments
         for(str line <- lines){
-            visit (line) {
-                case /[\t\n]/ => ""
-                }
+            removeWhitespace(line);
             if(size(line) > 0){
                 str filtered_str = removeLineComments(line);
-                println(filtered_str);
+                println(filtered_str); // TODO: actually use the filtered lines to check for clones
             }
         }
     }
@@ -72,6 +68,19 @@ str removeLineComments(str line) {
         }
     }
     return line;
+}
+
+// might need to revise to look for escaped versions of the block comment indicators (like in a string)
+str removeMultiLineComments(str file){
+    return visit(file) {
+        case /\/\*.*?\*\//s => ""
+    };
+}
+
+str removeWhitespace(str line){
+    return visit (line) {
+                case /[\t\n]/ => ""
+                };
 }
 // ========================functions from series 1===========================
 
