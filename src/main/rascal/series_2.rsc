@@ -10,6 +10,8 @@ import Set;
 import String;
 import ParseTree;
 
+import utils;
+
 int main() {
     loc smallsql_loc = |cwd:///smallsql0.21_src/|;
     loc hsql_loc = |cwd:///hsqldb-2.3.1/|;
@@ -17,6 +19,14 @@ int main() {
     // list[Declaration] asts = getASTs(hsql_loc);
     return 0;
 }
+
+/*
+Plan: 
+Go through each file and make sliding windows of 6 lines. (it will be different from 6 eventually) 
+Hash each of those sliding windows and save them in a hash set.
+When hashing make the key (the thing hashed) the string then store the location and lines it appears on.
+After all this has been done, compare the things at each hash (like the paper said).
+*/
 
 // return type should not be int
 // for now, clone pairs will be 3 lines long, but in the final implementation, they should be from 1 to file length i think
@@ -43,45 +53,7 @@ data ClonePair = clonePair(loc first_file, loc second_file, tuple[int, int] firs
 
 
 
-str removeLineComments(str line) {
-    bool inString = false;
-    bool escaped = false;
-    
-    for (int i <- [0..size(line)-1]) {
-        if (escaped) {
-            escaped = false;
-            continue;
-        }
-        
-        if (line[i] == "\\") {
-            escaped = true;
-            continue;
-        }
-        
-        if (line[i] == "\"") {
-            inString = !inString;
-        }
-        
-        // Found // outside of a string
-        if (!inString && i < size(line)-1 && line[i] == "/" && line[i+1] == "/") {
-            return line[0..i];
-        }
-    }
-    return line;
-}
 
-// might need to revise to look for escaped versions of the block comment indicators (like in a string)
-str removeMultiLineComments(str file){
-    return visit(file) {
-        case /\/\*.*?\*\//s => ""
-    };
-}
-
-str removeWhitespace(str line){
-    return visit (line) {
-                case /[\t\n]/ => ""
-                };
-}
 // ========================functions from series 1===========================
 
 list[loc] getAllJavaFiles(loc projectLocation) {
@@ -104,9 +76,3 @@ list[str] getAllMethods(loc projectLocation){
 }
 
 // class provided function
-list[Declaration] getASTs(loc projectLocation) {
-    M3 model = createM3FromMavenProject(projectLocation);
-    list[Declaration] asts = [createAstFromFile(f, true)
-        | f <- files(model.containment), isCompilationUnit(f)];
-    return asts;
-}
