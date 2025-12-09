@@ -51,6 +51,11 @@ Declaration serializeAST(Declaration ast){
      case \methodReference(Expression expression, list[Type] typeArguments, Expression name) => \methodRef(expression, typeArguments, \id("methodRef"))
      case \superMethodReference(list[Type] typeArguments, Expression name) => \superMethodReference(typeArguments,\id("superMethodRef"))
      case \memberValuePair(Expression name, Expression \value) => \memberValuePair(\id("memValPair"),\value)
+
+     //Declarations
+     //Statements
+     //Type (don't think i need to do this one)
+     //Modifier (might not need to do this one but it could be helpful)
     }
 }
 
