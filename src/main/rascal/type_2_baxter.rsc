@@ -25,9 +25,14 @@ int main(){
     loc smallsql_loc = |cwd:///smallsql0.21_src/|;
     loc hsql_loc = |cwd:///hsqldb-2.3.1/|;
     list[Declaration] asts = getASTs(smallsql_loc); // step1: parse program and generate AST
-    int placeholderMassThreshVal = 20;
+    int placeholderMassThreshVal = 15; // could go lower?
     real placeholderSimThresh = 0.9;
-    baxtersAlgo(asts, placeholderMassThreshVal, placeholderSimThresh);
+    set[ClonePair] allPairs = baxtersAlgo(asts, placeholderMassThreshVal, placeholderSimThresh);
+    println("Num Clones: <size(allPairs)>");
+    for(pair <- allPairs){
+        println("First loc: <pair.first_file>");
+        println("second loc: <pair.second_file>");
+    }
     return 0;
 }
 
@@ -49,14 +54,11 @@ AddClonePair(Clones,i,j)
 }
 */
 
-void baxtersAlgo(list[Declaration] asts, int massThresh, real simThresh){
+set[ClonePair] baxtersAlgo(list[Declaration] asts, int massThresh, real simThresh){
     set[ClonePair] allClonePairs = {};
     
     map[str, list[tuple[loc, node]]] hash_buckets = ();
     list[str] allHashVals = [];
-    int temp = 0;
-    int non_hits = 0;
-    int thrown_out = 0;
     for(ast <- asts){
         Declaration newAST = type2CloneASTFiltering(ast);
         visit(newAST){
@@ -112,6 +114,7 @@ void baxtersAlgo(list[Declaration] asts, int massThresh, real simThresh){
             }
         }
     }
+    return allClonePairs;
 }
 
 // a tiny bit slow but not horrible i guess (could change to not care about comments)
@@ -119,17 +122,25 @@ int calcMass(node astNode){
     // get string form version
     // take out all comments
     // then count loc
+
+    // ensures we only allow full lines
     loc sourceLoc = |http://www.example.org|;
     try 
         sourceLoc = astNode.src;
     catch:
         return -1;
 
-    // str sourceCode = readFile(sourceLoc);
-    // sourceCode = removeMultiLineComments(sourceCode);
-    // sourceCode = removeLineComments(sourceCode);
-    // return countLOC(sourceCode)
-    return sourceLoc.length;
+    // // str sourceCode = readFile(sourceLoc);
+    // // sourceCode = removeMultiLineComments(sourceCode);
+    // // sourceCode = removeLineComments(sourceCode);
+    // // return countLOC(sourceCode)
+    // return sourceLoc.length;
+
+    int result = 0;
+    visit(astNode) {
+        case node n: result += 1;
+    }
+    return result;
 }
 
 
@@ -170,9 +181,12 @@ set[node] collectNodes(node tree) {
 
 bool isMember(set[ClonePair] allClonePairs, node s){
     for(clonePair <- allClonePairs){
-        if(s.src == clonePair.first_file || s.src == clonePair.second_file){
+        try{
+            if(s.src == clonePair.first_file || s.src == clonePair.second_file){
             return true;
         }
+        }
+        catch: continue; // I hope this does what I think it does
     }
     return false;
 }
