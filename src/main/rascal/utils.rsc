@@ -11,6 +11,58 @@ import String;
 import ParseTree;
 
 // ====================filtering functions built for this project====================
+Declaration type2CloneASTFiltering(Declaration ast){
+    return visit(ast) {
+    
+    // expressions
+     case \assignment(Expression lhs, str operator, Expression rhs) => \assignment(lhs, "=", rhs)
+     case \characterLiteral(str charValue) => \characterLiteral("charVal")
+     case \fieldAccess(Expression name) => \fieldAccess(\id("fieldAccess"))
+     case \fieldAccess(Expression qualifier, Expression name) => \fieldAccess(qualifier, \id("fieldAccess"))
+     case \superFieldAccess(Expression expression, Expression name) => superFieldAccess(expression, \id("superFieldAccess"))
+     case \methodCall(list[Type] typeArguments, Expression name, list[Expression] arguments) => \methodCall(typeArguments, \id("methodCall"), arguments)
+     case \methodCall(Expression receiver, list[Type] typeArguments, Expression name, list[Expression] arguments) => methodCall(receiver, typeArguments, \id("methodCall"), arguments)
+     case \superMethodCall(list[Type] typeArguments, Expression name, list[Expression] arguments) => \superMethodCall(typeArguments, \id("superMethodCall"), arguments)
+     case \superMethodCall(Expression qualifier, list[Type] typeArguments, Expression name, list[Expression] arguments) => superMethodCall(qualifier, typeArguments, \id("superMethodCall"), arguments)
+     case \number(str numberValue) => \number("numVal")
+     case \booleanLiteral(str boolValue) => \booleanLiteral("boolVal")
+     case \stringLiteral(str stringValue) => \stringLiteral("strVal")
+     case \textBlock(str stringValue) => \textBlock("txtBlcVal")
+    //  case \id(str identifier) // not 100% sure about this one
+     case \methodReference(Type \type, list[Type] typeArguments, Expression name) => \methodReference(\type, typeArguments,\id("methodRef"))
+     case \methodReference(Expression expression, list[Type] typeArguments, Expression name) => \methodReference(expression, typeArguments, \id("methodRef"))
+     case \superMethodReference(list[Type] typeArguments, Expression name) => \superMethodReference(typeArguments,\id("superMethodRef"))
+     case \memberValuePair(Expression name, Expression \value) => \memberValuePair(\id("memValPair"),\value)
+
+     //Declarations
+     case  \enum(list[Modifier] modifiers, Expression name, list[Type] implements, list[Declaration] constants, list[Declaration] body) => \enum(modifiers, \id("enum"), implements, constants, body)
+     case  \enumConstant(list[Modifier] modifiers, Expression name, list[Expression] arguments, Declaration class) => \enumConstant(modifiers, \id("enumConstant"), arguments, class)
+     case  \enumConstant(list[Modifier] modifiers, Expression name, list[Expression] arguments) => \enumConstant(modifiers, \id("enumConstant"), arguments)
+     case  \class(list[Modifier] modifiers, Expression name, list[Declaration] typeParameters, list[Type] extends, list[Type] implements, list[Declaration] body) => \class(modifiers, \id("class"), typeParameters, extends, implements, body)
+     case  \interface(list[Modifier] modifiers, Expression name, list[Declaration] typeParameters, list[Type] extends, list[Type] implements, list[Declaration] body) => \interface(modifiers, \id("interface"), typeParameters, extends, implements, body)
+     case  \method(list[Modifier] modifiers, list[Declaration] typeParameters, Type \return, Expression name, list[Declaration] parameters, list[Expression] exceptions, Statement impl) => \method(modifiers, typeParameters, \return, \id("method"), parameters, exceptions, impl)
+     case  \method(list[Modifier] modifiers, list[Declaration] typeParameters, Type \return, Expression name, list[Declaration] parameters, list[Expression] exceptions) => \method(modifiers, typeParameters, \return, \id("method"), parameters, exceptions)
+     case  \constructor(list[Modifier] modifiers, Expression name, list[Declaration] parameters, list[Expression] exceptions, Statement impl) => \constructor(modifiers, \id("constructor"), parameters, exceptions, impl)
+    //case   | \variables(list[Modifier] modifiers, Type \type, list[Declaration] \fragments) // maybe?
+     case  \variable(Expression name, list[Declaration] dimensionTypes) => \variable(\id("var"), dimensionTypes)
+     // might need to edit the initializer below
+     case  \variable(Expression name, list[Declaration] dimensionTypes, Expression \initializer) => \variable(\id("var"), dimensionTypes, initializer)
+     case  \typeParameter(Expression name, list[Type] extendsList) => \typeParameter(\id("typeParam"), extendsList)
+     case  \annotationType(list[Modifier] modifiers, Expression name, list[Declaration] body) => \annotationType(modifiers, \id("annoType"), body)
+     case  \annotationTypeMember(list[Modifier] modifiers, Type \type, Expression name) => \annotationTypeMember(modifiers, \type, \id("annoTypeMember"))
+     case  \annotationTypeMember(list[Modifier] modifiers, Type \type, Expression name, Expression defaultBlock) => \annotationTypeMember(modifiers, \type, \id("annoTypeMember"), defaultBlock)
+     case  \parameter(list[Modifier] modifiers, Type \type, Expression name, list[Declaration] dimensions) => \parameter(modifiers,\type, \id("parameter"), dimensions)
+     case  \vararg(list[Modifier] modifiers, Type \type, Expression name) => \vararg(modifiers,\type,\id("vararg"))
+
+     //Statements
+     case \label(str identifier, Statement body) => \label("label", body)
+    //  | \throw(Expression expression) // maybe
+
+     //Type (don't think i need to do this one)
+     //Modifier (might not need to do this one but it could be helpful)
+    }
+}
+
 str removeLineComments(str line) {
     bool inString = false;
     bool escaped = false;
@@ -62,3 +114,6 @@ list[Declaration] getASTs(loc projectLocation) {
 int countLOC(str source) {
     return (0 | it + 1 | /\n/ := source);
 }
+
+// ====================new custom data types====================
+data ClonePair = clonePair(loc first_file, loc second_file);
