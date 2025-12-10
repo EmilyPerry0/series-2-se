@@ -6,10 +6,10 @@ import lang::java::\syntax::Java18;
 
 import IO;
 import List;
-import util::Maybe;
 import String;
 import Node;
 import Set;
+import Relation;
 
 import utils;
 
@@ -22,16 +22,44 @@ The algorithm consists of the following steps:
 */
 
 int main(){
+    int cloneType = 2;
+    str projectName = "smallSQL";
+
     loc smallsql_loc = |cwd:///smallsql0.21_src/|;
-    loc hsql_loc = |cwd:///hsqldb-2.3.1/|;
+    // loc hsql_loc = |cwd:///hsqldb-2.3.1/|;
+
     list[Declaration] asts = getASTs(smallsql_loc); // step1: parse program and generate AST
-    int placeholderMassThreshVal = 15; // could go lower?
-    real placeholderSimThresh = 0.9;
-    set[ClonePair] allPairs = baxtersAlgo(asts, placeholderMassThreshVal, placeholderSimThresh);
-    println("Num Clones: <size(allPairs)>");
-    for(pair <- allPairs){
-        println("First loc: <pair.first_file>");
-        println("second loc: <pair.second_file>");
+
+    int massThreshVal = 15; // it's now 15, could go lower?
+    real simThresh = 0.9;
+
+    list[ClonePair] allPairs = toList(baxtersAlgo(asts, massThreshVal, simThresh));
+
+    int clonedLOC = getTotalLOCFromAllClonePairs(allPairs);
+    int totalLOC = getProjectLOCFromASTs(asts);
+    real duplicatedPercent = 100.0 * clonedLOC / totalLOC;
+    int biggestCloneSize = getBiggestCloneSize(allPairs);
+
+    println("Summary Report:");
+    println("Project: <projectName>");
+    println("Clone Type <cloneType>");
+    println("Duplicated Line %: <duplicatedPercent>%");
+    println("Number of Clones: <size(allPairs)>");
+    println("Biggest Clone: <biggestCloneSize> LOC");
+    // println("Biggest Clone Class: <biggestCloneClass> Members");
+    println("Some Example Clones: ");
+    for(i <- [0..1]){
+        println("=====Example <i+1>=====");
+        println("Location 1: <allPairs[i].first_file>");
+        println("Location 2: <allPairs[i].second_file>");
+        println("File 1:");
+        loc first_file_example = allPairs[i].first_file;
+        str first_str_example = readFile(first_file_example);
+        println(first_str_example);
+        println("File 2:");
+        loc second_file_example = allPairs[i].second_file;
+        str second_str_example = readFile(second_file_example);
+        println(second_str_example);
     }
     return 0;
 }
@@ -117,11 +145,8 @@ set[ClonePair] baxtersAlgo(list[Declaration] asts, int massThresh, real simThres
     return allClonePairs;
 }
 
-// a tiny bit slow but not horrible i guess (could change to not care about comments)
+// def will need to justify this in the report
 int calcMass(node astNode){
-    // get string form version
-    // take out all comments
-    // then count loc
 
     // ensures we only allow full lines
     loc sourceLoc = |http://www.example.org|;
@@ -129,12 +154,6 @@ int calcMass(node astNode){
         sourceLoc = astNode.src;
     catch:
         return -1;
-
-    // // str sourceCode = readFile(sourceLoc);
-    // // sourceCode = removeMultiLineComments(sourceCode);
-    // // sourceCode = removeLineComments(sourceCode);
-    // // return countLOC(sourceCode)
-    // return sourceLoc.length;
 
     int result = 0;
     visit(astNode) {
@@ -189,4 +208,28 @@ bool isMember(set[ClonePair] allClonePairs, node s){
         catch: continue; // I hope this does what I think it does
     }
     return false;
+}
+
+
+/* steps (my idea):
+1. take in all of the clone pairs
+2. Create an empty list of clone classes
+3. loop over all the clone pairs.
+    3.5 in the loop, compare each pair to first of each clone class.
+        if it has a Similarity above the threshold, it goes in the class. otherwise make a new class.
+*/
+
+/*
+Second idea: workshopped with gemini:
+    
+*/
+
+// might need to clean the pairs first
+void generateCloneClasses(set[ClonePair] allPairs){
+    list[list[loc]] cloneClasses;
+    for(pair <- allPairs){
+        for(class <- cloneClasses){
+            
+        }
+    }
 }

@@ -11,6 +11,47 @@ import String;
 import ParseTree;
 
 // ====================filtering functions built for this project====================
+int getBiggestCloneSize(list[ClonePair] allPairs){
+    int maxSize = -1;
+    int currSize = -1;
+
+    for(pair <- allPairs){
+        currSize = getLOCfromClonePair(pair) / 2;
+        if(currSize > maxSize){
+            maxSize = currSize;
+        }
+    }
+    return maxSize;
+}
+
+int getProjectLOCFromASTs(list[Declaration] asts){
+    set[loc] uniqueFiles = {ast.src.top | ast <- asts};
+    str currFile = "";
+    str filteredFile = "";
+    int total = 0;
+    
+    for(file <- uniqueFiles){
+        currFile = readFile(file);
+        filteredFile = type_1_filter(currFile);
+        total += countLOC(filteredFile);
+    }
+    return total;
+}
+
+int getTotalLOCFromAllClonePairs(list[ClonePair] allPairs){
+    int total = 0;
+    for(pair <- allPairs){
+        total += getLOCfromClonePair(pair);
+    }
+    return total;
+}
+
+int getLOCfromClonePair(ClonePair pair){
+    str first_pair_src = type_1_filter(readFile(pair.first_file));
+    str second_pair_src = type_1_filter(readFile(pair.second_file));
+    return size(split("\n", first_pair_src)) + size(split("\n", second_pair_src));
+}
+
 Declaration type2CloneASTFiltering(Declaration ast){
     return visit(ast) {
     
@@ -61,6 +102,19 @@ Declaration type2CloneASTFiltering(Declaration ast){
      //Type (don't think i need to do this one)
      //Modifier (might not need to do this one but it could be helpful)
     }
+}
+
+// full processing for removing whitespace and comments
+str type_1_filter(str file){
+    str initial_filtering = removeMultiLineComments(file);
+    str final_result = "";
+    list[str] lines = split("\n", initial_filtering);
+    for(line <- lines){
+        if(line != ""){ // filter out empty lines
+            final_result = final_result + removeWhitespace(removeLineComments(line)) + "\n";
+        }
+    }
+    return final_result[0..-2]; // get rid of the final newline
 }
 
 str removeLineComments(str line) {
