@@ -10,6 +10,7 @@ import String;
 import Node;
 import Set;
 import Relation;
+import analysis::graphs::Graph;
 
 import utils;
 
@@ -22,7 +23,7 @@ The algorithm consists of the following steps:
 */
 
 int main(){
-    int cloneType = 2;
+    int cloneType = 1;
     str projectName = "smallSQL";
 
     loc smallsql_loc = |cwd:///smallsql0.21_src/|;
@@ -30,10 +31,10 @@ int main(){
 
     list[Declaration] asts = getASTs(smallsql_loc); // step1: parse program and generate AST
 
-    int massThreshVal = 15; // it's now 15, could go lower?
+    int massThreshVal = 20; // it's now 15, could go lower?
     real simThresh = 0.9;
 
-    list[ClonePair] allPairs = toList(baxtersAlgo(asts, massThreshVal, simThresh));
+    list[ClonePair] allPairs = toList(baxtersAlgo(asts, massThreshVal, simThresh, cloneType));
 
     int clonedLOC = getTotalLOCFromAllClonePairs(allPairs);
     int totalLOC = getProjectLOCFromASTs(asts);
@@ -61,6 +62,10 @@ int main(){
         str second_str_example = readFile(second_file_example);
         println(second_str_example);
     }
+    // for(pair <- allPairs){
+    //     println("First: <pair.first_file>");
+    //     println("Second: <pair.second_file>");
+    // }
     return 0;
 }
 
@@ -82,13 +87,16 @@ AddClonePair(Clones,i,j)
 }
 */
 
-set[ClonePair] baxtersAlgo(list[Declaration] asts, int massThresh, real simThresh){
+set[ClonePair] baxtersAlgo(list[Declaration] asts, int massThresh, real simThresh, int cloneType){
     set[ClonePair] allClonePairs = {};
     
     map[str, list[tuple[loc, node]]] hash_buckets = ();
     list[str] allHashVals = [];
     for(ast <- asts){
-        Declaration newAST = type2CloneASTFiltering(ast);
+        Declaration newAST = ast;
+        if(cloneType == 2){
+            newAST = type2CloneASTFiltering(ast);
+        }
         visit(newAST){
             case node subtree : {
                 if(calcMass(subtree) >= massThresh){
@@ -220,16 +228,29 @@ bool isMember(set[ClonePair] allClonePairs, node s){
 */
 
 /*
-Second idea: workshopped with gemini:
+Second idea: workshopped with gemini: use graph theory and transitive closures to create the classes
     
 */
 
 // might need to clean the pairs first
 void generateCloneClasses(set[ClonePair] allPairs){
-    list[list[loc]] cloneClasses;
-    for(pair <- allPairs){
-        for(class <- cloneClasses){
-            
-        }
+    // list[list[loc]] cloneClasses;
+    rel[loc, loc] R = {<cp.first_file, cp.second_file> | ClonePair cp <- allPairs};;
+    rel[loc, loc] R_closure = R + ident(domain(R));
+    set[set[loc]] cloneClasses = {};
+    set[loc] remainingInstances = domain(R);
+    while (!isEmpty(remainingInstances)) {
+        // Pick an arbitrary, un-processed instance
+        loc currentInstance = getOneFrom(remainingInstances);
+        
+        // Find the set of all instances reachable from the current one
+        // This set is a maximal connected component (a Clone Class).
+        set[loc] newClass = reachable(R_closure, {currentInstance});
+        
+        // Add the new class to the result set
+        cloneClasses += {newClass};
+        
+        // Remove all instances in the new class from the list of remaining instances
+        remainingInstances = remainingInstances - newClass;
     }
 }
