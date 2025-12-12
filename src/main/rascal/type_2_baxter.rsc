@@ -67,10 +67,6 @@ int main(){
         str second_str_example = readFile(second_file_example);
         println(second_str_example);
     }
-    // for(pair <- allPairs){
-    //     println("First: <pair.first_file>");
-    //     println("Second: <pair.second_file>");
-    // }
     int i = 0;
     for(cloneClass <- cloneClasses){
         println("Clone Class <i+1>: ");
@@ -119,12 +115,10 @@ set[ClonePair] baxtersAlgo(list[Declaration] asts, int massThresh, real simThres
                     //hash  i 
                     // might need to switch to a worse hash function if we want to detect similar but not exactly the same clones
                     // accoridng to the baxter paper, we might also want to make it so there are only size(asts) * 0.1 buckets
-                    str hashVal = md5Hash(unsetRec(type2CloneASTFiltering(subtree), {"src", "decl", "typ"})); // not sure if stripping typ is necessary but it might be helpful
+                    str hashVal = md5Hash(unsetRec(type2CloneASTFiltering(subtree), {"src", "decl", "typ"}));
                     if(hashVal in hash_buckets){
                         hash_buckets = hash_buckets + (hashVal:hash_buckets[hashVal] + [<subtree.src, subtree>]);
-                        // println("Bucket size: <size(hash_buckets[hashVal])>");
                     }else{
-                        // hash_buckets = hash_buckets + (hashVal:hash_buckets[hashVal] + [<subtree.src, subtree>]);
                         hash_buckets = hash_buckets + (hashVal:[<subtree.src, subtree>]);
                         allHashVals = allHashVals + hashVal;
                     }
@@ -145,45 +139,12 @@ set[ClonePair] baxtersAlgo(list[Declaration] asts, int massThresh, real simThres
         currBucket = hash_buckets[hashVal];
         for(i <- currBucket){
             for(j <- currBucket){
-    //             // disregard when talking about the exact same piece of code
-    //             // check Similarity
                 if(i[0] != j[0] && compareTree(i[1],j[1]) > simThresh){
                     allClonePairs = allClonePairs + {clonePair(i[0], j[0])};
                 }
             }
         }
     }
-                    //For each subtree s of i
-    //                 println("loc: <i[0]>");
-    //                 visit(i[1]){
-    //                     case node subtree_i:{
-    //                         //If IsMember(Clones,s)
-                            
-                            
-    //                         switch (subtree_i){
-    //                             case Declaration d:{
-    //                                 println("subtree: <d.src>");
-    //                             }
-    //                         }
-    //                         if(isMember(allClonePairs, subtree_i)){
-    //                             allClonePairs = {n | ClonePair n <- allClonePairs, (n.first_file != subtree_i.src && n.second_file != subtree_i.src)};
-    //                         }
-    //                     } 
-    //                 }
-    //                 //For each subtree s of i
-    //                 visit(j[1]){
-    //                     case node subtree_j:{
-    //                         //If IsMember(Clones,s)
-    //                         if(isMember(allClonePairs, subtree_j)){
-    //                             allClonePairs = {n | ClonePair n <- allClonePairs, (n.first_file != subtree_j.src && n.second_file != subtree_j.src)};
-    //                         }
-    //                     } 
-    //                 }
-    //             allClonePairs = allClonePairs + {clonePair(i[0], j[0])};
-    //         }
-    //     }
-    //     }
-    // }
     set[ClonePair] trimmed_clones = removeSubsumedClones(allClonePairs);
     return trimmed_clones;
 }
@@ -222,15 +183,14 @@ real compareTree(node i, node j){
     list[node] nodes_j = collectNodes(stripped_j);
     
     // Calculate shared and different nodes
-    list[node] shared = nodes_i & nodes_j;  // intersection
-    list[node] only_i = nodes_i - nodes_j;  // only in i
-    list[node] only_j = nodes_j - nodes_i;  // only in j
+    list[node] shared = nodes_i & nodes_j;  
+    list[node] only_i = nodes_i - nodes_j;  
+    list[node] only_j = nodes_j - nodes_i;  
     
     int S = size(shared);
     int L = size(only_i);
     int R = size(only_j);
 
-    // println("<2.0 * S / (2.0 * S + L + R)>");
     return 2.0 * S / (2.0 * S + L + R);
 }
 
@@ -247,13 +207,11 @@ bool isMember(set[ClonePair] allClonePairs, node s){
             switch (s){
                 case Declaration d:{
                     if(d.src >= clonePair.first_file || d.src >= clonePair.second_file){
-                        // println("<d.src>");
                         return true;
                     }
                 }
             }
     }
-    // println("not memeber");
     return false;
 }
 
@@ -267,9 +225,6 @@ set[ClonePair] removeSubsumedClones(set[ClonePair] allClonePairs){
         for(comparePair <- allClonePairs){
             if(pair == comparePair) continue;
             if(pair.first_file < comparePair.first_file && pair.second_file < comparePair.second_file || pair.second_file < comparePair.first_file && pair.first_file < comparePair.second_file){
-
-            // }
-            // if((pair.first_file < comparePair.first_file || pair.first_file < comparePair.second_file || pair.second_file < comparePair.first_file || pair.second_file < comparePair.second_file)){
                 shouldAdd = false;
             }
         }
@@ -280,91 +235,13 @@ set[ClonePair] removeSubsumedClones(set[ClonePair] allClonePairs){
     return cleanedClonePairs;
 }
 
-
-/* steps (my idea):
-1. take in all of the clone pairs
-2. Create an empty list of clone classes
-3. loop over all the clone pairs.
-    3.5 in the loop, compare each pair to first of each clone class.
-        if it has a Similarity above the threshold, it goes in the class. otherwise make a new class.
-*/
-
-/*
-Second idea: workshopped with gemini: use graph theory and transitive closures to create the classes
-    
-*/
-
-// might need to clean the pairs first
-// set[set[loc]] generateCloneClasses(set[ClonePair] allPairs){
-//     // list[list[loc]] cloneClasses;
-//     rel[loc, loc] R = {<cp.first_file, cp.second_file> | ClonePair cp <- allPairs};
-//     R = R + invert(R);
-//     R = R + ident(domain(R) + range(R));
-//     rel[loc, loc] R_closure = R+;
-
-//     set[set[loc]] cloneClasses = {};
-//     set[loc] remainingInstances = domain(R) + range(R);
-//     while (!isEmpty(remainingInstances)) {
-//         // Pick an arbitrary, un-processed instance
-//         loc currentInstance = getOneFrom(remainingInstances);
-        
-//         // Find the set of all instances reachable from the current one
-//         // This set is a maximal connected component (a Clone Class).
-//         set[loc] newClass =  R_closure[currentInstance] + {currentInstance};
-        
-//         // Add the new class to the result set
-//         cloneClasses += {newClass};
-        
-//         // Remove all instances in the new class from the list of remaining instances
-//         remainingInstances = remainingInstances - newClass;
-//     }
-//     return cloneClasses;
-// }
-
-// set[set[loc]] generateCloneClasses(set[ClonePair] allPairs){
-    
-//     // 1. Collect all unique clone locations (nodes)
-//     set[loc] nodes = {p.first_file | ClonePair p <- allPairs} 
-//                    + {p.second_file | ClonePair p <- allPairs};
-    
-//     // 2. Convert the set of ClonePair data into a standard Rascal relation (set[tuple[loc, loc]])
-//     // The Graph module uses set[tuple[N, N]] for edges.
-//     rel[loc, loc] edges = {<p.first_file, p.second_file> | ClonePair p <- allPairs};
-    
-//     // 3. Create the graph
-//     // Note: Since the relationship is symmetric, we treat this as an undirected graph, 
-//     // or just rely on the connected component algorithm to handle it naturally.
-//     Graph[loc] cloneGraph = Graph(nodes, edges);
-    
-//     // 4. Find the connected components (the clone classes)
-//     // The components() function returns a set of sets of nodes (i.e., set[set[loc]]).
-//     set[set[loc]] cloneClasses = connectedComponents(cloneGraph);
-    
-//     // An optional step: components() might return a set[set[loc]] where some singletons
-//     // (a location with no partners) are also included if they were in the initial 'nodes' set.
-//     // If you only want clone classes of size > 1 (a true clone *pair* or more), you can filter them.
-//     // However, for completeness, we typically keep all components.
-    
-//     return cloneClasses;
-// }
-
 set[set[loc]] generateCloneClasses(set[ClonePair] allPairs){
     
-    // 1. Collect all unique clone locations (nodes)
-    // This isn't strictly needed for the connectedComponents function, 
-    // but good practice if you wanted to include singletons.
     set[loc] nodes = {p.first_file | ClonePair p <- allPairs} 
                    + {p.second_file | ClonePair p <- allPairs};
     
-    // 2. Convert ClonePair set into a standard Rascal relation (set[tuple[loc, loc]])
     rel[loc, loc] edges = {<p.first_file, p.second_file> | ClonePair p <- allPairs};
-    
-    // 3. Make the relation symmetric (undirected) since clone pairs are mutual
     rel[loc, loc] undirectedEdges = edges + invert(edges);
-    
-    // 4. Find the connected components (the clone classes)
-    // The function expects a relation and is named connectedComponents
-    // It infers the nodes from the relation's domain and range.
     set[set[loc]] cloneClasses = connectedComponents(undirectedEdges); 
     
     return cloneClasses;
