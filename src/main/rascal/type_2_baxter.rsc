@@ -20,6 +20,7 @@ import Node;
 import Set;
 import Relation;
 import analysis::graphs::Graph;
+import Location;
 
 import utils;
 
@@ -41,17 +42,21 @@ int main(){
     loc benchmarkProject_loc = |cwd:///benchmarkProject/|;
 
     list[Declaration] asts = getASTs(smallsql_loc); // step1: parse program and generate AST
+    // loc test1 = |cwd:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(2008,63,<53,8>,<55,9>);
+    // loc test2 = |cwd:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(1705,402,<48,4>,<57,5>);
+    // println(isContainedIn(test1, test2));
 
-    int massThreshVal = 50; // it's now 15, could go lower?
-    real simThresh = 0.9;
+    int massThreshVal = 25; // it's now 15, could go lower?
+    real simThresh = 1.0;
 
     list[ClonePair] allPairs = toList(baxtersAlgo(asts, massThreshVal, simThresh, cloneType));
-    set[set[loc]] cloneClasses = generateCloneClasses(toSet(allPairs));
+    set[set[loc]] cloneClasses = removeSubsumedClones(generateCloneClasses(toSet(allPairs)));
+    // set[set[loc]] cloneClasses = generateCloneClasses(toSet(allPairs));
 
-    int clonedLOC = getTotalLOCFromAllClonePairs(allPairs);
+    int clonedLOC = getTotalLOCFromAllClones(cloneClasses);
     int totalLOC = getProjectLOCFromASTs(asts);
     real duplicatedPercent = 100.0 * clonedLOC / totalLOC;
-    int biggestCloneSize = getBiggestCloneSize(allPairs);
+    int biggestCloneSize = getBiggestCloneSize(cloneClasses);
     int biggestCloneClass = getBiggestCloneClass(cloneClasses);
 
     println("Summary Report:");
@@ -147,14 +152,45 @@ set[ClonePair] baxtersAlgo(list[Declaration] asts, int massThresh, real simThres
         currBucket = hash_buckets[hashVal];
         for(i <- currBucket){
             for(j <- currBucket){
-                if(i[0] != j[0] && compareTree(i[1],j[1]) > simThresh){
+                if(i[0] != j[0] && compareTree(i[1],j[1]) >= simThresh){
                     allClonePairs = allClonePairs + {clonePair(i[0], j[0])};
                 }
             }
         }
     }
-    set[ClonePair] trimmed_clones = removeSubsumedClones(allClonePairs);
-    return trimmed_clones;
+    // set[ClonePair] trimmed_clones = removeSubsumedClones(allClonePairs);
+    // for(str hashVal <- allHashVals){
+    //     currBucket = hash_buckets[hashVal];
+    //     for(i <- currBucket){
+    //         for(j <- currBucket){
+    //             // disregard when talking about the exact same piece of code
+    //             // check Similarity
+    //             if(i[0] != j[0] && compareTree(i[1],j[1]) > simThresh){
+    //                 //For each subtree s of i
+    //                 visit(i[1]){
+    //                     case node subtree_i:{
+    //                         //If IsMember(Clones,s)
+    //                         if(isMember(allClonePairs, subtree_i)){
+    //                             allClonePairs = {n | ClonePair n <- allClonePairs, n.first_file != subtree_i.src && n.second_file != subtree_i.src};
+    //                         }
+    //                     } 
+    //                 }
+    //                 //For each subtree s of i
+    //                 visit(j[1]){
+    //                     case node subtree_j:{
+    //                         //If IsMember(Clones,s)
+    //                         if(isMember(allClonePairs, subtree_j)){
+    //                             allClonePairs = {n | ClonePair n <- allClonePairs, n.first_file != subtree_j.src && n.second_file != subtree_j.src};
+    //                         }
+    //                     } 
+    //                 }
+    //                 allClonePairs = allClonePairs + {clonePair(i[0], j[0])};
+    //             }
+    //         }
+    //     }
+    // }
+    // set[ClonePair] trimmedClonePairs = removeSubsumedClones(allClonePairs);
+    return allClonePairs;
 }
 
 // def will need to justify this in the report
@@ -223,31 +259,69 @@ bool isMember(set[ClonePair] allClonePairs, node s){
     return false;
 }
 
-set[ClonePair] removeSubsumedClones(set[ClonePair] allClonePairs){
+// set[set[loc]] removeSubsumedCloneClasses(set[set[loc]] cloneClasses){
+//     set[set[loc]] resultingCloneClass = {}; 
+//     for(cloneClass <- cloneClasses){
+//         bool isSubsumedFlag = false;
+//         for(compareCloneClass <- cloneClasses){
+//             if(cloneClass == compareCloneClass){continue;}
+
+//             if(isSubsumed(cloneClass, compareCloneClass)){
+//                 isSubsumedFlag = true;
+//             }
+//         }
+//         if(!isSubsumedFlag){
+//             resultingCloneClass = resultingCloneClass + {cloneClass};
+//         }
+//     }
+//     return resultingCloneClass;
+// }
+
+bool cloneClassSubsumed(set[loc] first_class, set[loc] second_class){
+    bool contained = false;
+    for(n <- first_class){
+        contained = false;
+        for(m <- second_class){
+            if(isStrictlyContainedIn(n,m)){
+                contained = true;
+                continue;
+            }
+        }
+        if(!contained){
+            return false;
+        }
+    }
+    return true;
+}
+
+set[set[loc]] removeSubsumedClones(set[set[loc]] allCloneClasses){
     // idea: loop through all of the clone pairs
     // if a clone pair's first file or second file is completely contained in another pair's first or second file, don't add it to the final set.
-    set[ClonePair] cleanedClonePairs = {};
+    set[set[loc]] cleanedCloneClasses = {};
     bool shouldAdd = true;
-    for(pair <- allClonePairs){
+    for(cloneClass <- allCloneClasses){
         shouldAdd = true;
-        for(comparePair <- allClonePairs){
-            if(pair == comparePair) continue;
-            if((pair.first_file <= comparePair.first_file && pair.second_file <= comparePair.second_file)){
+        for(compareClass <- allCloneClasses){
+            if(cloneClass == compareClass) continue;
+            // if((pair.first_file <= comparePair.first_file && pair.second_file <= comparePair.second_file)){
+            //     shouldAdd = false;
+            //     println("ddddfirst: <pair.first_file>");
+            //     println("second: <comparePair.first_file>");
+            //     println("first<pair.second_file>");
+            //     println("second <comparePair.second_file>");
+            // }
+            // if( (pair.second_file < comparePair.first_file && pair.first_file < comparePair.second_file)){
+            //     println("-");
+            // }
+            if(cloneClassSubsumed(cloneClass, compareClass)){
                 shouldAdd = false;
-                println("ddddfirst: <pair.first_file>");
-                println("second: <comparePair.first_file>");
-                println("first<pair.second_file>");
-                println("second <comparePair.second_file>");
-            }
-            if( (pair.second_file < comparePair.first_file && pair.first_file < comparePair.second_file)){
-                println("-");
             }
         }
         if(shouldAdd){
-            cleanedClonePairs = cleanedClonePairs + pair;
+            cleanedCloneClasses = cleanedCloneClasses + {cloneClass};
         }
     }
-    return cleanedClonePairs;
+    return cleanedCloneClasses;
 }
 
 set[set[loc]] generateCloneClasses(set[ClonePair] allPairs){

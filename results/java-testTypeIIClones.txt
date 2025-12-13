@@ -1,0 +1,10 @@
+name: method, loc: |java+compilationUnit:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(916,397,<25,4>,<35,5>) 
+name: method, loc: |java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1594,152,<49,0>,<56,1>) 
+name: method, loc: |java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1748,152,<58,0>,<65,1>) 
+name: method, loc: |java+compilationUnit:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(2113,413,<59,4>,<69,55>) 
+name: method, loc: |java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1398,194,<39,0>,<47,1>) 
+name: method, loc: |java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(2699,380,<77,4>,<86,5>) 
+name: method, loc: |java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1902,152,<67,0>,<74,1>) 
+name: method, loc: |java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(973,411,<32,4>,<42,5>) 
+name: method, loc: |java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(1390,497,<44,4>,<53,5>) 
+------------------------- 

@@ -22,12 +22,12 @@ int getBiggestCloneClass(set[set[loc]] cloneClasses){
     return maxSize;
 }
 
-int getBiggestCloneSize(list[ClonePair] allPairs){
+int getBiggestCloneSize(set[set[loc]] allCloneClasses){
     int maxSize = -1;
     int currSize = -1;
 
-    for(pair <- allPairs){
-        currSize = getLOCfromClonePair(pair) / 2;
+    for(cloneClass <- allCloneClasses){
+        currSize = getLOCfromCloneClass(cloneClass);
         if(currSize > maxSize){
             maxSize = currSize;
         }
@@ -49,18 +49,21 @@ int getProjectLOCFromASTs(list[Declaration] asts){
     return total;
 }
 
-int getTotalLOCFromAllClonePairs(list[ClonePair] allPairs){
+int getTotalLOCFromAllClones(set[set[loc]] allClasses){
     int total = 0;
-    for(pair <- allPairs){
-        total += getLOCfromClonePair(pair);
+    for(class <- allClasses){
+        total += getLOCfromCloneClass(class);
     }
     return total;
 }
 
-int getLOCfromClonePair(ClonePair pair){
-    str first_pair_src = type_1_filter(readFile(pair.first_file));
-    str second_pair_src = type_1_filter(readFile(pair.second_file));
-    return size(split("\n", first_pair_src)) + size(split("\n", second_pair_src));
+int getLOCfromCloneClass(set[loc] class){
+    int total = 0;
+    for(clone <- class){
+        str lines = type_1_filter(readFile(clone));
+        total += size(split("\n", lines));
+    }
+    return total;
 }
 
 node type2CloneASTFiltering(node subtree){
