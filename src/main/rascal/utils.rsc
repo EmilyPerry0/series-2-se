@@ -11,61 +11,6 @@ import String;
 import ParseTree;
 
 // ====================filtering functions built for this project====================
-int getBiggestCloneClass(set[set[loc]] cloneClasses){
-    int maxSize = -1;
-
-    for(class <- cloneClasses){
-        if(size(class) > maxSize){
-            maxSize = size(class);
-        }
-    }
-    return maxSize;
-}
-
-int getBiggestCloneSize(set[set[loc]] allCloneClasses){
-    int maxSize = -1;
-    int currSize = -1;
-
-    for(cloneClass <- allCloneClasses){
-        currSize = getLOCfromCloneClass(cloneClass);
-        if(currSize > maxSize){
-            maxSize = currSize;
-        }
-    }
-    return maxSize;
-}
-
-int getProjectLOCFromASTs(list[Declaration] asts){
-    set[loc] uniqueFiles = {ast.src.top | ast <- asts};
-    str currFile = "";
-    str filteredFile = "";
-    int total = 0;
-    
-    for(file <- uniqueFiles){
-        currFile = readFile(file);
-        filteredFile = type_1_filter(currFile);
-        total += countLOC(filteredFile);
-    }
-    return total;
-}
-
-int getTotalLOCFromAllClones(set[set[loc]] allClasses){
-    int total = 0;
-    for(class <- allClasses){
-        total += getLOCfromCloneClass(class);
-    }
-    return total;
-}
-
-int getLOCfromCloneClass(set[loc] class){
-    int total = 0;
-    for(clone <- class){
-        str lines = type_1_filter(readFile(clone));
-        total += size(split("\n", lines));
-    }
-    return total;
-}
-
 node type2CloneASTFiltering(node subtree){
     return visit(subtree) {
     
