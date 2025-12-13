@@ -1,13 +1,5 @@
 module type_2_baxter
 
-/*
-TODOs:
--Add sequencing
--Edit the subsumption logic so that it doesn't care about comments
--Edit the clone counting code
--edit the line counting code (based off of the clone classes instead probably)
-*/
-
 import lang::java::m3::Core;
 import lang::java::m3::AST;
 import lang::java::\syntax::Java18;
@@ -46,8 +38,6 @@ set[set[loc]] baxtersAlgo(list[Declaration] asts, int massThresh, real simThresh
     
     map[str, list[tuple[loc, node]]] hash_buckets = ();
     list[str] allHashVals = [];
-
-    
         
     for(ast <- asts){
         Declaration newAST = ast;
@@ -57,9 +47,6 @@ set[set[loc]] baxtersAlgo(list[Declaration] asts, int massThresh, real simThresh
         visit(newAST){
             case node subtree : {
                 if(calcMass(subtree) >= massThresh){
-                    //hash  i 
-                    // might need to switch to a worse hash function if we want to detect similar but not exactly the same clones
-                    // accoridng to the baxter paper, we might also want to make it so there are only size(asts) * 0.1 buckets
                     str hashVal = md5Hash(unsetRec(type2CloneASTFiltering(subtree), {"src", "decl", "typ"}));
                     if(hashVal in hash_buckets){
                         hash_buckets = hash_buckets + (hashVal:hash_buckets[hashVal] + [<subtree.src, subtree>]);
@@ -140,30 +127,17 @@ list[node] collectNodes(node tree) {
     return result;
 }
 
-bool isMember(set[ClonePair] allClonePairs, node s){
-    for(clonePair <- allClonePairs){
-            switch (s){
-                case Declaration d:{
-                    if(d.src >= clonePair.first_file || d.src >= clonePair.second_file){
-                        return true;
-                    }
-                }
-            }
-    }
-    return false;
-}
-
 bool cloneClassSubsumed(set[loc] first_class, set[loc] second_class){
-    bool contained = false;
-    for(n <- first_class){
-        contained = false;
-        for(m <- second_class){
-            if(isStrictlyContainedIn(n,m)){
-                contained = true;
+    bool subumed = false;
+    for(location <- first_class){
+        subumed = false;
+        for(compare_location <- second_class){
+            if(isStrictlyContainedIn(location, compare_location)){
+                subumed = true;
                 continue;
             }
         }
-        if(!contained){
+        if(!subumed){
             return false;
         }
     }
@@ -191,10 +165,7 @@ set[set[loc]] removeSubsumedClones(set[set[loc]] allCloneClasses){
 }
 
 set[set[loc]] generateCloneClasses(set[ClonePair] allPairs){
-    
-    set[loc] nodes = {p.first_file | ClonePair p <- allPairs} 
-                   + {p.second_file | ClonePair p <- allPairs};
-    
+       
     rel[loc, loc] edges = {<p.first_file, p.second_file> | ClonePair p <- allPairs};
     rel[loc, loc] undirectedEdges = edges + invert(edges);
     set[set[loc]] cloneClasses = connectedComponents(undirectedEdges); 

@@ -5,6 +5,8 @@ import lang::java::m3::Core;
 import lang::java::m3::AST;
 
 import String;
+import utils;
+import IO;
 
 void clonesToJSON(str projectName, int cloneType, set[set[loc]] cloneClasses){
     map[str, value] jsonOutput = generateJsonOutput(projectName, cloneType, cloneClasses);
@@ -22,14 +24,13 @@ map[str, value] generateJsonOutput(str projectName, int cloneType,set[set[loc]] 
         // Create the "files" array structure
         jsonFiles += ("id": id, "path": path);
     }
-    
-    // 2. Process clone classes
     list[map[str, value]] jsonCloneClasses = [];
     int classId = 1;
     
     str cloneTypeStr = "Type<cloneType>";
     
     for (cloneClass <- cloneClasses) {
+        cloneTypeStr = "Type<cloneType>";
         list[map[str, value]] membersJson = [];
         
         for (loc memberLoc <- cloneClass) {
@@ -46,6 +47,24 @@ map[str, value] generateJsonOutput(str projectName, int cloneType,set[set[loc]] 
                 "beginCol": member.beginCol,
                 "endCol": member.endCol
             );
+        }
+        bool type2 = false;
+        if(cloneType == 2){
+            for(memberLoc <- cloneClass){
+                if(type2){
+                    break;
+                }
+                for(memberLocComp <- cloneClass){
+                    if(memberLoc == memberLocComp){continue;}
+                    if(type_1_filter(readFile(memberLoc)) != type_1_filter(readFile(memberLocComp))){
+                        type2 = true;
+                        break;
+                    }
+                }
+            }
+            if(!type2){
+                cloneTypeStr = "Type1";
+            }
         }
         
         // Convert CloneClassJson record to JSON-compatible map
