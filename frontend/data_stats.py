@@ -78,3 +78,28 @@ def compute_file_stats(files: Dict[int, str], clone_classes: List[dict]) -> pd.D
     df["shortPath"] = df["path"].apply(short_path)
 
     return df.reset_index()
+
+import pandas as pd
+from typing import List, Dict
+
+# ... keep the previous functions ...
+
+
+def build_clone_class_df(clone_classes: List[dict]) -> pd.DataFrame:
+    """
+    Turn the enriched clone_classes list into a DataFrame for UI:
+      id, type, numMembers, numFilesInvolved, totalLOC, maxMemberLOC
+    """
+    rows = []
+    for cc in clone_classes:
+        rows.append(
+            {
+                "id": cc["id"],
+                "type": cc.get("type", "Unknown"),
+                "numMembers": cc.get("numMembers", len(cc.get("members", []))),
+                "numFilesInvolved": cc.get("numFilesInvolved", 0),
+                "totalLOC": cc.get("totalLOC", 0),
+                "maxMemberLOC": cc.get("maxMemberLOC", 0),
+            }
+        )
+    return pd.DataFrame(rows)
