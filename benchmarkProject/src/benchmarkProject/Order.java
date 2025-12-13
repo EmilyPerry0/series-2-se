@@ -24,11 +24,11 @@ public double getShippingCost(String customer) {
 }
 
 // --- Start of T2 Clone Class C (10 members) ---
-// T2 Clone Class Member 10/10: Literal and Type change (return type is float)
+// T2 Clone Class Member 10/10: Literal change 
 // @CloneClass T2-C (10/10) | Cloned in Item.dummyMethod1-5, OrderProcessor.dummyMethod1-4
-public float dummyMethod1_Order() { // Return type change (int -> float)
-   float value1 = 100f; // Literal and type change (100 -> 100f)
-   float value2 = 50f;  // Literal and type change (50 -> 50f)
+private int dummyMethod1_Order() { 
+   int value1 = 100; // Literal change 
+   int value2 = 50;  // Literal change
    for (int s = 0; s < 5; s++) {
        value1 += s;
    }
@@ -36,7 +36,7 @@ public float dummyMethod1_Order() { // Return type change (int -> float)
 }
 // --- End of T2 Clone Class C (Member 10/10) ---
 
-// Helper methods (T2 clones for padding)
+// Helper methods (T2 clones for padding, 4 extra for a total of 14)
 private int dummyMethod2_Order() {
    int varA = 100;
    int varB = 50;
