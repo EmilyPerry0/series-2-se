@@ -1,1 +1,256 @@
-["map",[[["str","cloneClasses"],["list",[["map",[[["str","members"],["list",[["map",[[["str","endCol"],["int",2]],[["str","endLine"],["int",12]],[["str","beginLine"],["int",9]],[["str","beginCol"],["int",39]],[["str","fileId"],["int",0]]]],["map",[[["str","endCol"],["int",6]],[["str","endLine"],["int",11]],[["str","beginLine"],["int",8]],[["str","beginCol"],["int",44]],[["str","fileId"],["int",2]]]]]]],[["str","type"],["str","Type2"]],[["str","id"],["int",1]]]],["map",[[["str","members"],["list",[["map",[[["str","endCol"],["int",6]],[["str","endLine"],["int",21]],[["str","beginLine"],["int",15]],[["str","beginCol"],["int",39]],[["str","fileId"],["int",2]]]],["map",[[["str","endCol"],["int",6]],[["str","endLine"],["int",13]],[["str","beginLine"],["int",7]],[["str","beginCol"],["int",51]],[["str","fileId"],["int",1]]]]]]],[["str","type"],["str","Type2"]],[["str","id"],["int",2]]]],["map",[[["str","members"],["list",[["map",[[["str","endCol"],["int",6]],[["str","endLine"],["int",57]],[["str","beginLine"],["int",48]],[["str","beginCol"],["int",5]],[["str","fileId"],["int",1]]]],["map",[[["str","endCol"],["int",6]],[["str","endLine"],["int",75]],[["str","beginLine"],["int",66]],[["str","beginCol"],["int",5]],[["str","fileId"],["int",2]]]],["map",[[["str","endCol"],["int",2]],[["str","endLine"],["int",56]],[["str","beginLine"],["int",49]],[["str","beginCol"],["int",1]],[["str","fileId"],["int",0]]]],["map",[[["str","endCol"],["int",6]],[["str","endLine"],["int",64]],[["str","beginLine"],["int",55]],[["str","beginCol"],["int",5]],[["str","fileId"],["int",2]]]],["map",[[["str","endCol"],["int",56]],[["str","endLine"],["int",69]],[["str","beginLine"],["int",59]],[["str","beginCol"],["int",5]],[["str","fileId"],["int",1]]]],["map",[[["str","endCol"],["int",6]],[["str","endLine"],["int",86]],[["str","beginLine"],["int",77]],[["str","beginCol"],["int",5]],[["str","fileId"],["int",2]]]],["map",[[["str","endCol"],["int",6]],[["str","endLine"],["int",46]],[["str","beginLine"],["int",37]],[["str","beginCol"],["int",5]],[["str","fileId"],["int",1]]]],["map",[[["str","endCol"],["int",6]],[["str","endLine"],["int",35]],[["str","beginLine"],["int",25]],[["str","beginCol"],["int",5]],[["str","fileId"],["int",1]]]],["map",[[["str","endCol"],["int",2]],[["str","endLine"],["int",65]],[["str","beginLine"],["int",58]],[["str","beginCol"],["int",1]],[["str","fileId"],["int",0]]]],["map",[[["str","endCol"],["int",50]],[["str","endLine"],["int",37]],[["str","beginLine"],["int",26]],[["str","beginCol"],["int",1]],[["str","fileId"],["int",0]]]],["map",[[["str","endCol"],["int",6]],[["str","endLine"],["int",42]],[["str","beginLine"],["int",32]],[["str","beginCol"],["int",5]],[["str","fileId"],["int",2]]]],["map",[[["str","endCol"],["int",6]],[["str","endLine"],["int",53]],[["str","beginLine"],["int",44]],[["str","beginCol"],["int",5]],[["str","fileId"],["int",2]]]],["map",[[["str","endCol"],["int",2]],[["str","endLine"],["int",74]],[["str","beginLine"],["int",67]],[["str","beginCol"],["int",1]],[["str","fileId"],["int",0]]]],["map",[[["str","endCol"],["int",2]],[["str","endLine"],["int",47]],[["str","beginLine"],["int",39]],[["str","beginCol"],["int",1]],[["str","fileId"],["int",0]]]]]]],[["str","type"],["str","Type2"]],[["str","id"],["int",3]]]],["map",[[["str","members"],["list",[["map",[[["str","endCol"],["int",50]],[["str","endLine"],["int",27]],[["str","beginLine"],["int",27]],[["str","beginCol"],["int",9]],[["str","fileId"],["int",2]]]],["map",[[["str","endCol"],["int",79]],[["str","endLine"],["int",19]],[["str","beginLine"],["int",18]],[["str","beginCol"],["int",4]],[["str","fileId"],["int",0]]]],["map",[[["str","endCol"],["int",52]],[["str","endLine"],["int",28]],[["str","beginLine"],["int",28]],[["str","beginCol"],["int",9]],[["str","fileId"],["int",2]]]]]]],[["str","type"],["str","Type2"]],[["str","id"],["int",4]]]],["map",[[["str","members"],["list",[["map",[[["str","endCol"],["int",57]],[["str","endLine"],["int",20]],[["str","beginLine"],["int",20]],[["str","beginCol"],["int",9]],[["str","fileId"],["int",1]]]],["map",[[["str","endCol"],["int",55]],[["str","endLine"],["int",19]],[["str","beginLine"],["int",18]],[["str","beginCol"],["int",9]],[["str","fileId"],["int",1]]]]]]],[["str","type"],["str","Type2"]],[["str","id"],["int",5]]]]]]],[["str","files"],["list",[["map",[[["str","path"],["str","Order.java"]],[["str","id"],["int",0]]]],["map",[[["str","path"],["str","OrderProcessor.java"]],[["str","id"],["int",1]]]],["map",[[["str","path"],["str","Item.java"]],[["str","id"],["int",2]]]]]]],[["str","project"],["str","smallSQL"]]]]
+{
+  "project": "smallSQL",
+  "files": [
+    {
+      "path": "benchmarkProject/src/benchmarkProject/Order.java",
+      "id": 0
+    },
+    {
+      "path": "benchmarkProject/src/benchmarkProject/OrderProcessor.java",
+      "id": 1
+    },
+    {
+      "path": "benchmarkProject/src/benchmarkProject/Item.java",
+      "id": 2
+    }
+  ],
+  "cloneClasses": [
+    {
+      "id": 1,
+      "type": "Type2",
+      "members": [
+        {
+          "fileId": 0,
+          "beginLine": 9,
+          "endLine": 12,
+          "beginCol": 39,
+          "endCol": 2,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 2,
+          "beginLine": 8,
+          "endLine": 11,
+          "beginCol": 44,
+          "endCol": 6,
+          "methodName": null,
+          "className": null
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "Type2",
+      "members": [
+        {
+          "fileId": 2,
+          "beginLine": 15,
+          "endLine": 21,
+          "beginCol": 39,
+          "endCol": 6,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 1,
+          "beginLine": 7,
+          "endLine": 13,
+          "beginCol": 51,
+          "endCol": 6,
+          "methodName": null,
+          "className": null
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "Type2",
+      "members": [
+        {
+          "fileId": 1,
+          "beginLine": 48,
+          "endLine": 57,
+          "beginCol": 5,
+          "endCol": 6,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 2,
+          "beginLine": 66,
+          "endLine": 75,
+          "beginCol": 5,
+          "endCol": 6,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 0,
+          "beginLine": 49,
+          "endLine": 56,
+          "beginCol": 1,
+          "endCol": 2,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 2,
+          "beginLine": 55,
+          "endLine": 64,
+          "beginCol": 5,
+          "endCol": 6,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 1,
+          "beginLine": 59,
+          "endLine": 69,
+          "beginCol": 5,
+          "endCol": 56,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 2,
+          "beginLine": 77,
+          "endLine": 86,
+          "beginCol": 5,
+          "endCol": 6,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 1,
+          "beginLine": 37,
+          "endLine": 46,
+          "beginCol": 5,
+          "endCol": 6,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 1,
+          "beginLine": 25,
+          "endLine": 35,
+          "beginCol": 5,
+          "endCol": 6,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 0,
+          "beginLine": 58,
+          "endLine": 65,
+          "beginCol": 1,
+          "endCol": 2,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 0,
+          "beginLine": 26,
+          "endLine": 37,
+          "beginCol": 1,
+          "endCol": 50,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 2,
+          "beginLine": 32,
+          "endLine": 42,
+          "beginCol": 5,
+          "endCol": 6,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 2,
+          "beginLine": 44,
+          "endLine": 53,
+          "beginCol": 5,
+          "endCol": 6,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 0,
+          "beginLine": 67,
+          "endLine": 74,
+          "beginCol": 1,
+          "endCol": 2,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 0,
+          "beginLine": 39,
+          "endLine": 47,
+          "beginCol": 1,
+          "endCol": 2,
+          "methodName": null,
+          "className": null
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "Type2",
+      "members": [
+        {
+          "fileId": 2,
+          "beginLine": 27,
+          "endLine": 27,
+          "beginCol": 9,
+          "endCol": 50,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 0,
+          "beginLine": 18,
+          "endLine": 19,
+          "beginCol": 4,
+          "endCol": 79,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 2,
+          "beginLine": 28,
+          "endLine": 28,
+          "beginCol": 9,
+          "endCol": 52,
+          "methodName": null,
+          "className": null
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "Type2",
+      "members": [
+        {
+          "fileId": 1,
+          "beginLine": 20,
+          "endLine": 20,
+          "beginCol": 9,
+          "endCol": 57,
+          "methodName": null,
+          "className": null
+        },
+        {
+          "fileId": 1,
+          "beginLine": 18,
+          "endLine": 19,
+          "beginCol": 9,
+          "endCol": 55,
+          "methodName": null,
+          "className": null
+        }
+      ]
+    }
+  ]
+}
