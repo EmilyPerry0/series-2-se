@@ -21,6 +21,7 @@ void displayProjectMetrics(set[set[loc]] cloneClasses, list[Declaration] asts, s
     list[ClonePair] exampleClones = getExampleClones(cloneClasses);
     
     // display metrics
+    println("=============================");
     println("Summary Report:");
     println("Project: <projectName>");
     println("Clone Type <cloneType>");
@@ -112,10 +113,21 @@ int calcNumClones(set[set[loc]] allcloneClasses){
 list[ClonePair] getExampleClones(set[set[loc]] allCloneClasses){
     list[set[loc]] list_allCloneClasses = toList(allCloneClasses);
     list[loc] firstExampleClass = toList(list_allCloneClasses[0]);
-    list[loc] secondExampleClass = toList(list_allCloneClasses[1]);
+    list[loc] secondExampleClass;
+    if(size(list_allCloneClasses) > 1){
+        secondExampleClass  = toList(list_allCloneClasses[1]);
+    }else{
+        secondExampleClass = toList(list_allCloneClasses[0]);
+    }
+   
 
     ClonePair firstExample = clonePair(firstExampleClass[0], firstExampleClass[1]);
-    ClonePair secondExample = clonePair(secondExampleClass[0], secondExampleClass[1]);
-
+    ClonePair secondExample;
+    if(size(list_allCloneClasses) > 1){
+        secondExample = clonePair(secondExampleClass[0], secondExampleClass[1]);
+    }else{
+        secondExample = clonePair(secondExampleClass[2], secondExampleClass[3]);
+    }
+    
     return [firstExample, secondExample];
 }

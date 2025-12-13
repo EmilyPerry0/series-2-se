@@ -1,0 +1,188 @@
+# Usage Instructions (Frontend)
+To start the visualization, run this in your terminal from the root of the project.
+
+`streamlit run frontend/Home.py`
+
+The visualization will appear in your browser.
+# Usage Instructions (Backend)
+import `main.rsc` and run `main()` in a Rascal terminal.
+# Output Report for all 3 projects:
+=============================
+Summary Report:
+Project: smallSQL
+Clone Type 2
+Duplicated Line %: 12.85437404%
+Number of Clones: 698
+Biggest Clone: 295 LOC
+Biggest Clone Class: 17 Members
+Some Example Clones: 
+=====Example 1=====
+Location 1: |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptions.java|(3521,233,<76,40>,<83,5>)
+Location 2: |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestStatement.java|(1551,235,<48,43>,<55,5>)
+File 1:
+{
+        if(init) return;
+                Connection con = AllTests.getConnection();
+                Statement st = con.createStatement();
+                dropTable( con, "exceptions");
+                st.execute("Create Table exceptions (c varchar(30), i int)");
+                init = true;
+    }
+File 2:
+{
+        if(init) return;
+                Connection con = AllTests.getConnection();
+                Statement st = con.createStatement();
+                dropTable( con, "statement");
+                st.execute("Create Table statement (c varchar(30), i counter)");
+                init = true;
+    }
+=====Example 2=====
+Location 1: |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDeleteUpdate.java|(2557,91,<84,2>,<86,3>)
+Location 2: |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDeleteUpdate.java|(1832,85,<63,2>,<65,3>)
+File 1:
+for(int i=0; i<10; i++){
+                        st.execute("Insert into testUpdate Values("+i+','+i+")");
+                }
+File 2:
+for(int i=0; i<10; i++){
+                        st.execute("Insert into testDelete Values("+i+")");
+                }
+=============================
+Summary Report:
+Project: HSQL
+Clone Type 2
+Duplicated Line %: 18.66820760%
+Number of Clones: 5037
+Biggest Clone: 414 LOC
+Biggest Clone Class: 70 Members
+Some Example Clones: 
+=====Example 1=====
+Location 1: |java+compilationUnit:///hsqldb-2.3.1/hsqldb/src/org/hsqldb/server/Server.java|(37289,426,<1102,4>,<1114,5>)
+Location 2: |java+compilationUnit:///hsqldb-2.3.1/hsqldb/src/org/hsqldb/server/Server.java|(37721,406,<1116,4>,<1128,5>)
+File 1:
+/**
+     * Sets whether this server calls System.exit() when shutdown.
+     *
+     * @param noExit if true, System.exit() will not be called.
+     *
+     * @jmx.managed-attribute
+     */
+    public void setNoSystemExit(boolean noExit) {
+
+        printWithThread("setNoSystemExit(" + noExit + ")");
+        serverProperties.setProperty(ServerProperties.sc_key_no_system_exit,
+                                     noExit);
+    }
+File 2:
+/**
+     * Sets whether this server restarts on shutdown.
+     *
+     * @param restart if true, this server restarts on shutdown
+     *
+     * @jmx.managed-attribute
+     */
+    public void setRestartOnShutdown(boolean restart) {
+
+        printWithThread("setRestartOnShutdown(" + restart + ")");
+        serverProperties.setProperty(
+            ServerProperties.sc_key_autorestart_server, restart);
+    }
+=====Example 2=====
+Location 1: |java+compilationUnit:///hsqldb-2.3.1/hsqldb/src/org/hsqldb/HsqlDateTime.java|(6732,712,<198,4>,<215,5>)
+Location 2: |java+compilationUnit:///hsqldb-2.3.1/hsqldb/src/org/hsqldb/HsqlDateTime.java|(7450,716,<217,4>,<234,5>)
+File 1:
+public static long convertMillisToCalendar(Calendar calendar,
+            long millis) {
+
+        synchronized (tempCalGMT) {
+            synchronized (calendar) {
+                calendar.clear();
+                tempCalGMT.setTimeInMillis(millis);
+                calendar.set(tempCalGMT.get(Calendar.YEAR),
+                             tempCalGMT.get(Calendar.MONTH),
+                             tempCalGMT.get(Calendar.DAY_OF_MONTH),
+                             tempCalGMT.get(Calendar.HOUR_OF_DAY),
+                             tempCalGMT.get(Calendar.MINUTE),
+                             tempCalGMT.get(Calendar.SECOND));
+
+                return calendar.getTimeInMillis();
+            }
+        }
+    }
+File 2:
+public static long convertMillisFromCalendar(Calendar calendar,
+            long millis) {
+
+        synchronized (tempCalGMT) {
+            synchronized (calendar) {
+                tempCalGMT.clear();
+                calendar.setTimeInMillis(millis);
+                tempCalGMT.set(calendar.get(Calendar.YEAR),
+                               calendar.get(Calendar.MONTH),
+                               calendar.get(Calendar.DAY_OF_MONTH),
+                               calendar.get(Calendar.HOUR_OF_DAY),
+                               calendar.get(Calendar.MINUTE),
+                               calendar.get(Calendar.SECOND));
+
+                return tempCalGMT.getTimeInMillis();
+            }
+        }
+    }
+=============================
+Summary Report:
+Project: BenchmarkProject
+Clone Type 2
+Duplicated Line %: 61.86046512%
+Number of Clones: 14
+Biggest Clone: 133 LOC
+Biggest Clone Class: 14 Members
+Some Example Clones: 
+=====Example 1=====
+Location 1: |java+compilationUnit:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(1705,402,<48,4>,<57,5>)
+Location 2: |java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(2297,396,<66,4>,<75,5>)
+File 1:
+// T2 Clone Class Member 8/10: Identifier and Literal change
+    // @CloneClass T2-C (8/10) | Cloned in Item.dummyMethod1-5, dummyMethod6-7, dummyMethod9-10, Order.dummyMethod1-5
+    private int dummyMethod3_OP() {
+        int temp1 = 150; // Literal change (100 -> 150)
+        int temp2 = 50;
+        for (int q = 0; q < 5; q++) {
+            temp1 += q;
+        }
+        return temp1 + temp2;
+    }
+File 2:
+// T2 Clone Class Member 4/10: Identifier and literal change
+    // @CloneClass T2-C (4/10) | Cloned in Item.dummyMethod1-3, dummyMethod5-10, OrderProcessor.dummyMethod1-4, and Order.dummyMethod1-5
+    private int dummyMethod4() {
+        int x = 100;
+        int y = 10; // Literal change (50 -> 10)
+        for (int l = 0; l < 5; l++) {
+            x += l;
+        }
+        return x + y;
+    }
+=====Example 2=====
+Location 1: |java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1504,152,<49,0>,<56,1>)
+Location 2: |java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(1893,398,<55,4>,<64,5>)
+File 1:
+private int dummyMethod3_Order() {
+   int varA = 100;
+   int varB = 50;
+   for (int u = 0; u < 5; u++) {
+       varA += u;
+   }
+   return varA + varB;
+}
+File 2:
+// T2 Clone Class Member 3/10: Identifier and literal change
+    // @CloneClass T2-C (3/10) | Cloned in Item.dummyMethod1-2, dummyMethod4-10, OrderProcessor.dummyMethod1-4, and Order.dummyMethod1-5
+    private int dummyMethod3() {
+        int a = 200; // Literal change (100 -> 200)
+        int b = 50;
+        for (int k = 0; k < 5; k++) {
+            a += k;
+        }
+        return a + b;
+    }

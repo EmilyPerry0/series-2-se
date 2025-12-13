@@ -4,6 +4,8 @@ import lang::json::IO;
 import lang::java::m3::Core;
 import lang::java::m3::AST;
 
+import String;
+
 void clonesToJSON(str projectName, int cloneType, set[set[loc]] cloneClasses){
     map[str, value] jsonOutput = generateJsonOutput(projectName, cloneType, cloneClasses);
     loc output_loc = |cwd:///data/<projectName>.json|;
@@ -31,7 +33,7 @@ map[str, value] generateJsonOutput(str projectName, int cloneType,set[set[loc]] 
         list[map[str, value]] membersJson = [];
         
         for (loc memberLoc <- cloneClass) {
-            str filePath = memberLoc.path;
+            str filePath = substring(memberLoc.path, 1); // cut off the starting "/"
             int fileId = pathToId[filePath];
             
             CloneMember member = createCloneMember(memberLoc, fileId);
@@ -71,7 +73,7 @@ tuple[map[str, int], list[tuple[int, str]]] collectFileInfos(set[set[loc]] clone
     int nextId = 0;
     
     // Extract unique file paths from all clone classes
-    set[str] uniquePaths = {l.path | set[loc] cc <- cloneClasses, loc l <- cc};
+    set[str] uniquePaths = {substring(l.path, 1) | set[loc] cc <- cloneClasses, loc l <- cc};
     
     list[tuple[int, str]] fileList = [];
     

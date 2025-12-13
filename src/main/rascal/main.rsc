@@ -18,13 +18,13 @@ int main(){
     loc bench_loc = |cwd:///benchmarkProject/|;
 
     // -- Config Variables --
-    int massThreshVal = 15;
+    int massThreshVal = 25;
     real simThresh = 1.0;
     int cloneType = 2;
 
     // call main project function with each location
-    // main_project_process(smallsql_loc, massThreshVal, simThresh, cloneType, smallsql_name);
-    // main_project_process(hsql_loc, massThreshVal, simThresh, cloneType, hsql_name);
+    main_project_process(smallsql_loc, massThreshVal, simThresh, cloneType, smallsql_name);
+    main_project_process(hsql_loc, massThreshVal, simThresh, cloneType, hsql_name);
     main_project_process(bench_loc, massThreshVal, simThresh, cloneType, bench_name);
 
 
