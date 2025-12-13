@@ -25,7 +25,7 @@ int main(){
     // call main project function with each location
     main_project_process(smallsql_loc, massThreshVal, simThresh, cloneType, smallsql_name);
     main_project_process(hsql_loc, massThreshVal, simThresh, cloneType, hsql_name);
-    main_project_process(bench_loc, massThreshVal, simThresh, cloneType, bench_name);
+    main_project_process(bench_loc, 15, simThresh, cloneType, bench_name); // smaller value for benchmark project since it's smaller
 
 
     return 0;
