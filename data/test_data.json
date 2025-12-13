@@ -1,0 +1,21 @@
+{
+  "project": "smallsql",
+  "files": [{ "id": 0, "path": "benchmarkProject/src/Item.java" }],
+  "cloneClasses": [
+    {
+      "id": 1,
+      "type": "TypeI",
+      "members": [
+        {
+          "fileId": 0,
+          "beginLine": 42,
+          "endLine": 65,
+          "beginCol": 1,
+          "endCol": 1,
+          "methodName": "foo",
+          "className": "Bar"
+        }
+      ]
+    }
+  ]
+}
