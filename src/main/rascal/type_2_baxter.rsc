@@ -1,5 +1,13 @@
 module type_2_baxter
 
+/*
+TODOs:
+-Add sequencing
+-Edit the subsumption logic so that it doesn't care about comments
+-Edit the clone counting code
+-edit the line counting code (based off of the clone classes instead probably)
+*/
+
 import lang::java::m3::Core;
 import lang::java::m3::AST;
 import lang::java::\syntax::Java18;
@@ -32,9 +40,9 @@ int main(){
     // loc hsql_loc = |cwd:///hsqldb-2.3.1/|;
     loc benchmarkProject_loc = |cwd:///benchmarkProject/|;
 
-    list[Declaration] asts = getASTs(benchmarkProject_loc); // step1: parse program and generate AST
+    list[Declaration] asts = getASTs(smallsql_loc); // step1: parse program and generate AST
 
-    int massThreshVal = 15; // it's now 15, could go lower?
+    int massThreshVal = 50; // it's now 15, could go lower?
     real simThresh = 0.9;
 
     list[ClonePair] allPairs = toList(baxtersAlgo(asts, massThreshVal, simThresh, cloneType));
@@ -54,7 +62,7 @@ int main(){
     println("Biggest Clone: <biggestCloneSize> LOC");
     println("Biggest Clone Class: <biggestCloneClass> Members");
     println("Some Example Clones: ");
-    for(i <- [0..1]){
+    for(i <- [0,1]){
         println("=====Example <i+1>=====");
         println("Location 1: <allPairs[i].first_file>");
         println("Location 2: <allPairs[i].second_file>");
@@ -135,7 +143,7 @@ set[ClonePair] baxtersAlgo(list[Declaration] asts, int massThresh, real simThres
     });
 
 
-    for(str hashVal <- sortedHashVals){
+    for(str hashVal <- allHashVals){
         currBucket = hash_buckets[hashVal];
         for(i <- currBucket){
             for(j <- currBucket){
@@ -224,8 +232,15 @@ set[ClonePair] removeSubsumedClones(set[ClonePair] allClonePairs){
         shouldAdd = true;
         for(comparePair <- allClonePairs){
             if(pair == comparePair) continue;
-            if(pair.first_file < comparePair.first_file && pair.second_file < comparePair.second_file || pair.second_file < comparePair.first_file && pair.first_file < comparePair.second_file){
+            if((pair.first_file <= comparePair.first_file && pair.second_file <= comparePair.second_file)){
                 shouldAdd = false;
+                println("ddddfirst: <pair.first_file>");
+                println("second: <comparePair.first_file>");
+                println("first<pair.second_file>");
+                println("second <comparePair.second_file>");
+            }
+            if( (pair.second_file < comparePair.first_file && pair.first_file < comparePair.second_file)){
+                println("-");
             }
         }
         if(shouldAdd){
@@ -246,3 +261,65 @@ set[set[loc]] generateCloneClasses(set[ClonePair] allPairs){
     
     return cloneClasses;
 }
+
+// loc getFirstTokenLocation(node n) {
+//     loc firstLoc = |unknown:///|; 
+    
+//     // Use a variable to track if we've found it to stop the search externally.
+//     bool found = false; 
+
+//     visit(n) {
+//         case node sub: {
+//             if (has(sub.src)) {
+//                 firstLoc = sub.src;
+//                 found = true;
+//                 // To stop the traversal fully, you often need to use a 'throw' 
+//                 // in Rascal, but for simplicity, we rely on the pre-order guarantee 
+//                 // and break the loop logic if possible, or trust the pre-order finding.
+//             }
+//         }
+//     }
+//     // Since Rascal's 'visit' is pre-order, the last assignment to firstLoc 
+//     // will be the result of the top-most/left-most node, which is what we want.
+//     // The previous implementation was slightly confusing but functional due to pre-order. 
+//     // We remove the return continue to be safer.
+//     return firstLoc;
+// }
+
+// loc getLastTokenLocation(node n) {
+//     loc lastLoc = |unknown:///|;
+
+//     visit(n) {
+//         case node sub: {
+//             if (has(sub.src)) {
+//                 // Check if this location ends AFTER our current lastLoc (or if lastLoc is still uninitialized)
+//                 if (!has(lastLoc) || sub.src.end.line > lastLoc.end.line || 
+//                    (sub.src.end.line == lastLoc.end.line && sub.src.end.column > lastLoc.end.column)) {
+                    
+//                     lastLoc = sub.src;
+//                 }
+//             }
+//         }
+//     }
+//     return lastLoc;
+// }
+
+// Declaration stripLocation(Declaration d) {
+//     if (!has(d.src)) return d;
+
+//     loc oldLoc = d.src;
+    
+//     loc firstTokenLoc = getFirstTokenLocation(d);
+//     loc lastTokenLoc = getLastTokenLocation(d);
+
+//     if (has(firstTokenLoc) && has(lastTokenLoc)) {
+//         loc newLoc = oldLoc.top[
+//             begin: firstTokenLoc.begin, 
+//             end: lastTokenLoc.end
+//         ];
+        
+//         return setField(d, "src", newLoc);
+//     }
+    
+//     return d;
+// }

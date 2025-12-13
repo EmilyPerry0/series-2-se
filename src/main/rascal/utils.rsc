@@ -31,9 +31,6 @@ int getBiggestCloneSize(list[ClonePair] allPairs){
         if(currSize > maxSize){
             maxSize = currSize;
         }
-        if(currSize == 135){
-            println("<pair.first_file>");
-        }
     }
     return maxSize;
 }
@@ -76,7 +73,6 @@ node type2CloneASTFiltering(node subtree){
      case \stringLiteral(str stringValue) => \stringLiteral("strVal")
      case \textBlock(str stringValue) => \textBlock("txtBlcVal")
      case \id(str identifier) => \id("identifier")
-     //Modifier (might not need to do this one but it could be helpful)
     }
 }
 
