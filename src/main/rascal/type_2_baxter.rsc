@@ -11,6 +11,7 @@ TODOs:
 import lang::java::m3::Core;
 import lang::java::m3::AST;
 import lang::java::\syntax::Java18;
+import lang::json::IO;
 
 
 import IO;
@@ -41,12 +42,12 @@ int main(){
     // loc hsql_loc = |cwd:///hsqldb-2.3.1/|;
     loc benchmarkProject_loc = |cwd:///benchmarkProject/|;
 
-    list[Declaration] asts = getASTs(smallsql_loc); // step1: parse program and generate AST
+    list[Declaration] asts = getASTs(benchmarkProject_loc); // step1: parse program and generate AST
     // loc test1 = |cwd:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(2008,63,<53,8>,<55,9>);
     // loc test2 = |cwd:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(1705,402,<48,4>,<57,5>);
     // println(isContainedIn(test1, test2));
 
-    int massThreshVal = 25; // it's now 15, could go lower?
+    int massThreshVal = 15; // it's now 15, could go lower?
     real simThresh = 1.0;
 
     list[ClonePair] allPairs = toList(baxtersAlgo(asts, massThreshVal, simThresh, cloneType));
@@ -58,6 +59,18 @@ int main(){
     real duplicatedPercent = 100.0 * clonedLOC / totalLOC;
     int biggestCloneSize = getBiggestCloneSize(cloneClasses);
     int biggestCloneClass = getBiggestCloneClass(cloneClasses);
+
+    // --- JSON Output Start ---
+    map[str, value] jsonOutput = generateJsonOutput(projectName, cloneType, cloneClasses, asts);
+    
+    // Convert the Rascal map structure to a JSON string
+    str jsonString = toJSON(jsonOutput);
+    
+    // Write the JSON string to a file (e.g., "clone_report.json")
+    writeFile(|cwd:///data/clone_report.json|, jsonString);
+    
+    println("Clone report written to clone_report.json");
+    // --- JSON Output End ---
 
     println("Summary Report:");
     println("Project: <projectName>");
@@ -397,3 +410,179 @@ set[set[loc]] generateCloneClasses(set[ClonePair] allPairs){
     
 //     return d;
 // }
+
+/**
+ * Finds the nearest enclosing Class/Interface and Method/Constructor declaration 
+ * for a given location (loc) within the ASTs.
+ */
+tuple[str, str] getEnclosingContext(loc cloneLoc, list[Declaration] allASTs) {
+    str className = "UnknownClass";
+    str methodName = "UnknownMethod";
+
+    // 1. Find the specific AST for the file containing the clone
+    Declaration fileAST = getFileAST(cloneLoc.path, allASTs);
+
+    // 2. Traverse the file's AST to find the tightest enclosing declarations
+    visit (fileAST) {
+        // A. Catch Class or Interface declarations
+        case Declaration td: {
+            if (isStrictlyContainedIn(cloneLoc, td.src)) {
+                // Keep updating the className to the innermost one found so far
+                if (td has decl) {
+                    className = readFile(td.decl);
+                }
+            }
+        }
+        
+        // // B. Catch Method or Constructor declarations
+        // case MethodDeclaration md: {
+        //     // Check if the method's location fully contains the clone location
+        //     if (isStrictlyContainedIn(cloneLoc, md.src)) {
+        //         // Keep updating the methodName to the innermost one found so far
+        //         if (md has decl) {
+        //             methodName = md.decl;
+        //         }
+        //     }
+        // }
+        // case ConstructorDeclaration cd: {
+        //     if (isStrictlyContainedIn(cloneLoc, cd.src)) {
+        //         // Constructors use the class name
+        //         if (cd has decl) {
+        //             methodName = cd.decl;
+        //         }
+        //     }
+        // }
+    }
+
+    return <className, methodName>;
+}
+
+/**
+ * Helper to quickly find the AST for a specific file path.
+ */
+Declaration getFileAST(str filePath, list[Declaration] allASTs) {
+    Declaration return_ast;
+    for (Declaration ast <- allASTs) {
+        if (ast has src && ast.src.path == filePath) {
+            return ast;
+        }
+    }
+    return return_ast;
+}
+
+// This is the record type for a single clone instance (member)
+data CloneMember = cloneMember(
+    int fileId, 
+    int beginLine, 
+    int endLine, 
+    int beginCol, 
+    int endCol
+);
+
+// This is the record type for a single clone class
+data CloneClassJson = cloneClassJson(
+    int id, 
+    str \type, 
+    list[CloneMember] members
+);
+
+/**
+ * Maps a file path (from a loc) to a unique integer ID,
+ * building up a map of all files and their IDs.
+ */
+tuple[map[str, int], list[tuple[int, str]]] collectFileInfos(set[set[loc]] cloneClasses) {
+    map[str, int] pathToId = ();
+    int nextId = 0;
+    
+    // Extract unique file paths from all clone classes
+    set[str] uniquePaths = {l.file | set[loc] cc <- cloneClasses, loc l <- cc};
+    
+    list[tuple[int, str]] fileList = [];
+    
+    for (str path <- uniquePaths) {
+        pathToId[path] = nextId;
+        fileList += [<nextId, path>];
+        nextId += 1;
+    }
+    
+    return <pathToId, fileList>;
+}
+
+/**
+ * Transforms a single loc into a CloneMember record, 
+ * using the full ASTs to find context.
+ */
+CloneMember createCloneMember(loc cloneLoc, int fileId, list[Declaration] allASTs) { // <--- ADDED allASTs
+    
+    return cloneMember(
+        fileId,
+        cloneLoc.begin.line, 
+        cloneLoc.end.line,
+        cloneLoc.begin.column + 1,
+        cloneLoc.end.column + 1
+    );
+}
+/**
+ * Generates the final JSON output structure.
+ */
+map[str, value] generateJsonOutput(
+    str projectName, 
+    int cloneType, // Use to set the type string
+    set[set[loc]] cloneClasses,
+    list[Declaration] allASTs
+) {
+    // 1. Collect file information
+    tuple[map[str, int], list[tuple[int, str]]] fileData = collectFileInfos(cloneClasses);
+    map[str, int] pathToId = fileData[0];
+    list[tuple[int, str]] fileList = fileData[1];
+    
+    list[map[str, value]] jsonFiles = [];
+    for (<id, path> <- fileList) {
+        // Create the "files" array structure
+        jsonFiles += ("id": id, "path": path);
+    }
+    
+    // 2. Process clone classes
+    list[map[str, value]] jsonCloneClasses = [];
+    int classId = 1;
+    
+    str cloneTypeStr = "Type<cloneType>";
+    
+    for (cloneClass <- cloneClasses) {
+        list[map[str, value]] membersJson = [];
+        
+        for (loc memberLoc <- cloneClass) {
+            str filePath = memberLoc.file;
+            int fileId = pathToId[filePath];
+            
+            CloneMember member = createCloneMember(memberLoc, fileId, allASTs);
+            
+            // Convert CloneMember record to JSON-compatible map
+            membersJson += (
+                "fileId": member.fileId,
+                "beginLine": member.beginLine,
+                "endLine": member.endLine,
+                "beginCol": member.beginCol,
+                "endCol": member.endCol
+            );
+        }
+        
+        // Convert CloneClassJson record to JSON-compatible map
+        jsonCloneClasses += (
+            "id": classId,
+            "type": cloneTypeStr,
+            "members": membersJson
+        );
+        
+        classId += 1;
+    }
+    
+    // 3. Assemble the final structure
+    map[str, value] finalJsonStructure = (
+        "project": projectName,
+        "files": jsonFiles,
+        "cloneClasses": jsonCloneClasses
+    );
+    
+    return finalJsonStructure;
+}
