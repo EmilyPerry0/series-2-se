@@ -42,12 +42,12 @@ int main(){
     // loc hsql_loc = |cwd:///hsqldb-2.3.1/|;
     loc benchmarkProject_loc = |cwd:///benchmarkProject/|;
 
-    list[Declaration] asts = getASTs(benchmarkProject_loc); // step1: parse program and generate AST
+    list[Declaration] asts = getASTs(smallsql_loc); // step1: parse program and generate AST
     // loc test1 = |cwd:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(2008,63,<53,8>,<55,9>);
     // loc test2 = |cwd:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(1705,402,<48,4>,<57,5>);
     // println(isContainedIn(test1, test2));
 
-    int massThreshVal = 15; // it's now 15, could go lower?
+    int massThreshVal = 20; // it's now 15, could go lower?
     real simThresh = 1.0;
 
     list[ClonePair] allPairs = toList(baxtersAlgo(asts, massThreshVal, simThresh, cloneType));
@@ -64,10 +64,9 @@ int main(){
     map[str, value] jsonOutput = generateJsonOutput(projectName, cloneType, cloneClasses, asts);
     
     // Convert the Rascal map structure to a JSON string
-    str jsonString = toJSON(jsonOutput);
     
     // Write the JSON string to a file (e.g., "clone_report.json")
-    writeFile(|cwd:///data/clone_report.json|, jsonString);
+    writeJSON(|cwd:///data/clone_report.json|, jsonOutput);
     
     println("Clone report written to clone_report.json");
     // --- JSON Output End ---
