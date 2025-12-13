@@ -9,7 +9,7 @@ from data_stats import enrich_clone_classes, compute_file_stats
 
 # ---------- DATA LOADING ----------
 DATA_DIR = Path(__file__).parent.parent / "data"
-DEFAULT_JSON = DATA_DIR / "test_data.json"  # TODO: change to correct default file
+DEFAULT_JSON = DATA_DIR / "clone_report.json"  # TODO: change to correct default file
 
 project, files, clone_classes = load_clone_data(DEFAULT_JSON)
 clone_classes = enrich_clone_classes(clone_classes)
