@@ -8,8 +8,10 @@ DATA_DIR = ROOT_DIR / "data"
 
 def read_code_snippet(project_root: Path, file_path: str, begin_line: int, end_line: int) -> str:
     """
-    Read lines [begin_line, end_line] (1-based, inclusive) from the given file.
-    Returns a single string with newline separators.
+    Read lines [begin_line, end_line] but return **only code lines**:
+      - Skip blank lines
+      - Skip comment-only lines (// ... or /* ... */)
+    Keep original line numbers for context.
     """
     full_path = project_root / file_path
 
@@ -19,18 +21,46 @@ def read_code_snippet(project_root: Path, file_path: str, begin_line: int, end_l
     text = full_path.read_text(encoding="utf-8", errors="replace")
     lines: List[str] = text.splitlines()
 
-    # Clamp indices to avoid crashes on bad data
     start_idx = max(0, begin_line - 1)
     end_idx = min(len(lines), end_line)
 
     snippet_lines = lines[start_idx:end_idx]
-    # Add 1-based line numbers for readability
-    numbered = [
-        f"{i+1:4d}: {line}" for i, line in enumerate(snippet_lines, start=start_idx)
-    ]
 
-    return "\n".join(numbered)
+    filtered = []
+    inside_block_comment = False
 
+    for i, line in enumerate(snippet_lines, start=start_idx):
+        raw = line.strip()
+
+        # Handle block comments /* ... */
+        if inside_block_comment:
+            if "*/" in raw:
+                inside_block_comment = False
+            continue
+
+        if raw.startswith("/*"):
+            inside_block_comment = True
+            continue
+
+        # Skip blank lines
+        if raw == "":
+            continue
+
+        # Skip single-line comments
+        if raw.startswith("//"):
+            continue
+
+        # Skip comment-only block lines
+        if raw.startswith("*") and raw.endswith("*/"):
+            continue
+
+        # Keep the line (with original line number)
+        filtered.append(f"{i+1:4d}: {line}")
+
+    if not filtered:
+        return "// (No non-comment code lines in this region)"
+
+    return "\n".join(filtered)
 
 def choose_dataset() -> Path:
     """
