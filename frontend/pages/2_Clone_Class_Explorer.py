@@ -1,24 +1,21 @@
+# frontend/pages/2_Clone_Class_Explorer.py
 import streamlit as st
 from pathlib import Path
 import pandas as pd
 
 from data_loader import load_clone_data
 from data_stats import enrich_clone_classes, compute_file_stats, build_clone_class_df
-from code_utils import read_code_snippet
+from utils import read_code_snippet, choose_dataset
 
 
 ROOT_DIR = Path(__file__).parent.parent.parent
-DATA_DIR = ROOT_DIR / "data"
 PROJECT_ROOT = ROOT_DIR  # where src/ lives
 
 st.title("Clone-Class Explorer")
 
-# --- Get dataset path from session_state ---
-if "json_path" not in st.session_state:
-    st.warning("No dataset selected. Go to the **Home** page and pick a JSON file.")
-    st.stop()
-
-json_path = Path(st.session_state["json_path"])
+# ---------- Dataset selection ----------
+st.sidebar.header("Dataset")
+json_path = choose_dataset()
 
 project, files, clone_classes = load_clone_data(json_path)
 clone_classes = enrich_clone_classes(clone_classes)
@@ -27,17 +24,9 @@ class_df = build_clone_class_df(clone_classes)
 
 st.caption(f"Project: **{project}** | JSON: `{json_path.name}`")
 
-# =========================================================
-# ----------------- CLONE-CLASS EXPLORER ------------------
-# =========================================================
-
-st.markdown("---")
-st.header("Clone-class explorer")
-
-# ---------- Sidebar / top filters for clone classes ----------
+# ---------- Clone-class filters ----------
 st.sidebar.header("Filters (clone classes)")
 
-# Type filter: based on what exists in data
 available_types = sorted(class_df["type"].dropna().unique().tolist())
 selected_types = st.sidebar.multiselect(
     "Clone types to include",
@@ -59,6 +48,16 @@ min_total_loc_class = st.sidebar.number_input(
     step=5,
 )
 
+# Optional: quick presets
+preset = st.sidebar.radio(
+    "Quick size filter",
+    options=["None", "Ignore clones < 5 LOC", "Only big clones (>= 20 LOC)"],
+)
+if preset == "Ignore clones < 5 LOC":
+    min_total_loc_class = max(min_total_loc_class, 5)
+elif preset == "Only big clones (>= 20 LOC)":
+    min_total_loc_class = max(min_total_loc_class, 20)
+
 # Optional: filter by file involvement
 file_filter_options = (
     ["<any file>"]
@@ -74,7 +73,7 @@ if file_filter_choice == "<any file>":
 else:
     file_filter_id = int(file_filter_choice.split(":")[0])  # get fileId before colon
 
-# ---------- Apply class filters ----------
+# ---------- Apply filters ----------
 filtered_classes_df = class_df.copy()
 
 if selected_types:
@@ -85,7 +84,6 @@ filtered_classes_df = filtered_classes_df[
     & (filtered_classes_df["totalLOC"] >= min_total_loc_class)
 ]
 
-# If file filter is active: we need to check members of classes
 if file_filter_id is not None:
     valid_ids = set()
     for cc in clone_classes:
@@ -97,23 +95,19 @@ if filtered_classes_df.empty:
     st.warning("No clone classes match the current class filters.")
     st.stop()
 
-# ---------- Class list (table) ----------
+st.caption(
+    f"Showing {len(filtered_classes_df)} / {len(class_df)} clone classes (after filters)."
+)
+
+# ---------- Class table ----------
 st.subheader("Clone classes")
-
-# We’ll show top K by totalLOC
-if len(filtered_classes_df) == 0:
-    st.warning("No clone classes match the current filters.")
-    st.stop()
-
-max_k = max(1, min(100, len(filtered_classes_df)))
 
 top_k = st.slider(
     "Show top K clone classes (by total LOC)",
-    min_value=1,
-    max_value=max_k,
-    value=max_k,
+    min_value=0,
+    max_value=min(100, len(filtered_classes_df)),
+    value=min(20, len(filtered_classes_df)),
 )
-
 
 filtered_classes_df = filtered_classes_df.sort_values(
     by="totalLOC", ascending=False
@@ -130,7 +124,7 @@ st.dataframe(
             "maxMemberLOC": "Max member LOC",
         }
     ),
-    use_container_width=True,
+    width='stretch',
     hide_index=True,
 )
 
@@ -141,12 +135,10 @@ selected_id = st.selectbox(
     format_func=lambda cid: f"Class {cid}",
 )
 
-# Find the corresponding object in the original list (for members)
 selected_class = next(cc for cc in clone_classes if cc["id"] == selected_id)
 
 st.markdown(f"### Details for clone class `{selected_id}` (type: `{selected_class.get('type', 'Unknown')}`)")
 
-# Summary KPIs for this class
 cc_col1, cc_col2, cc_col3, cc_col4 = st.columns(4)
 cc_col1.metric("Members", selected_class["numMembers"])
 cc_col2.metric("Files involved", selected_class["numFilesInvolved"])
@@ -184,7 +176,7 @@ st.dataframe(
             "endLine": "End line",
         }
     ),
-    use_container_width=True,
+    width='stretch',
     hide_index=True,
 )
 
@@ -201,12 +193,10 @@ if view_mode == "Stacked":
     for idx, row in members_df.iterrows():
         st.markdown(
             f"**Member {idx+1}** – `{Path(row['filePath']).name}` "
-            f"({row['className']}.{row['methodName']}, "
-            f"lines {row['beginLine']}-{row['endLine']})"
+            f"({row['className']}.{row['methodName']}, lines {row['beginLine']}-{row['endLine']})"
         )
-
         snippet = read_code_snippet(
-            ROOT_DIR,
+            PROJECT_ROOT,
             row["filePath"],
             int(row["beginLine"]),
             int(row["endLine"]),
@@ -214,10 +204,8 @@ if view_mode == "Stacked":
         st.code(snippet, language="java")
         st.markdown("---")
 else:
-    # side-by-side: we show up to the first 3 members (for layout sanity)
     max_side = min(3, len(members_df))
     cols = st.columns(max_side)
-
     for i in range(max_side):
         row = members_df.iloc[i]
         with cols[i]:
@@ -228,7 +216,7 @@ else:
                 f"Lines {row['beginLine']}-{row['endLine']}"
             )
             snippet = read_code_snippet(
-                ROOT_DIR,
+                PROJECT_ROOT,
                 row["filePath"],
                 int(row["beginLine"]),
                 int(row["endLine"]),

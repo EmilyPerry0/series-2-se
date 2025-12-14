@@ -1,9 +1,9 @@
-from typing import Dict, List
 from pathlib import PurePosixPath
 import pandas as pd
+import itertools
 
 
-def enrich_clone_classes(clone_classes: List[dict]) -> List[dict]:
+def enrich_clone_classes(clone_classes: list[dict]) -> list[dict]:
     """
     Adds per-member LOC and per-class aggregates:
       member["loc"], class["totalLOC"], class["maxMemberLOC"],
@@ -27,7 +27,7 @@ def enrich_clone_classes(clone_classes: List[dict]) -> List[dict]:
     return clone_classes
 
 
-def compute_file_stats(files: Dict[int, str], clone_classes: List[dict]) -> pd.DataFrame:
+def compute_file_stats(files: dict[int, str], clone_classes: list[dict]) -> pd.DataFrame:
     """
     Returns a DataFrame with one row per file that participates in at least one clone:
       fileId, path, fileName, package, totalClonedLOC, numCloneClasses
@@ -79,13 +79,7 @@ def compute_file_stats(files: Dict[int, str], clone_classes: List[dict]) -> pd.D
 
     return df.reset_index()
 
-import pandas as pd
-from typing import List, Dict
-
-# ... keep the previous functions ...
-
-
-def build_clone_class_df(clone_classes: List[dict]) -> pd.DataFrame:
+def build_clone_class_df(clone_classes: list[dict]) -> pd.DataFrame:
     """
     Turn the enriched clone_classes list into a DataFrame for UI:
       id, type, numMembers, numFilesInvolved, totalLOC, maxMemberLOC
@@ -102,4 +96,44 @@ def build_clone_class_df(clone_classes: List[dict]) -> pd.DataFrame:
                 "maxMemberLOC": cc.get("maxMemberLOC", 0),
             }
         )
+    return pd.DataFrame(rows)
+
+def build_treemap_nodes(file_df: pd.DataFrame, project_name: str) -> pd.DataFrame:
+    """
+    Build nodes for a Plotly treemap:
+    - Root: project
+    - Level 1: directory (everything before file name, or <root>)
+    - Level 2: file (shortPath)
+    value = totalClonedLOC at file level
+    """
+    rows = []
+
+    # Root node
+    total_loc = int(file_df["totalClonedLOC"].sum())
+    rows.append({"label": project_name, "parent": "", "value": total_loc})
+
+    # Directory nodes
+    dir_paths = set()
+    for _, row in file_df.iterrows():
+        p = PurePosixPath(row["path"])
+        dir_path = "/".join(p.parts[:-1]) if len(p.parts) > 1 else "<root>"
+        dir_paths.add(dir_path)
+
+    for d in dir_paths:
+        rows.append({
+            "label": d,
+            "parent": project_name,
+            "value": 0,  # the size sits on the files
+        })
+
+    # File nodes
+    for _, row in file_df.iterrows():
+        p = PurePosixPath(row["path"])
+        dir_path = "/".join(p.parts[:-1]) if len(p.parts) > 1 else "<root>"
+        rows.append({
+            "label": row["shortPath"],
+            "parent": dir_path,
+            "value": int(row["totalClonedLOC"]),
+        })
+
     return pd.DataFrame(rows)
