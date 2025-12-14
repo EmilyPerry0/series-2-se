@@ -7,6 +7,7 @@ import type_2_baxter;
 import utils;
 import metrics;
 import json_output;
+import clones_to_txt;
 
 int main(){
     str smallsql_name = "smallSQL";
@@ -20,7 +21,7 @@ int main(){
     // -- Config Variables --
     int massThreshVal = 25;
     real simThresh = 1.0;
-    int cloneType = 2;
+    int cloneType = 1;
 
     // call main project function with each location
     main_project_process(smallsql_loc, massThreshVal, simThresh, cloneType, smallsql_name);
@@ -43,6 +44,7 @@ void main_project_process(loc project_loc, int massThresh, real simThresh, int c
     // output clone metrics
     displayProjectMetrics(allCloneClasses, asts, name, cloneType);
 
-    // write clone data to json file
+    // write clone data to files
     clonesToJSON(name, cloneType, allCloneClasses);
+    clonesToTxt(name, cloneType, allCloneClasses);
 }
