@@ -103,7 +103,7 @@ st.subheader("Clone classes")
 
 top_k = st.slider(
     "Show top K clone classes (by total LOC)",
-    min_value=0,
+    min_value=1,
     max_value=min(100, len(filtered_classes_df)),
     value=min(20, len(filtered_classes_df)),
 )
@@ -126,6 +126,127 @@ st.dataframe(
     width='stretch',
     hide_index=True,
 )
+
+# ---------- Clone Class Scatter Plot ----------
+st.markdown("---")
+st.subheader("Clone Classes: Size vs. Duplication")
+
+scatter_data = filtered_classes_df.copy()
+
+fig_scatter = px.scatter(
+    scatter_data,
+    x='numMembers',
+    y='totalLOC',
+    size='numFilesInvolved',
+    color='type',
+    hover_data={
+        'id': True,
+        'numMembers': True,
+        'totalLOC': True,
+        'numFilesInvolved': True,
+        'maxMemberLOC': True,
+        'type': True
+    },
+    labels={
+        'numMembers': 'Number of Clone Members',
+        'totalLOC': 'Total Cloned LOC',
+        'numFilesInvolved': 'Files Involved',
+        'type': 'Clone Type'
+    },
+    color_discrete_map={
+        'Type1': '#e74c3c',
+        'Type2': '#3498db',
+        'Type3': '#2ecc71',
+        'Unknown': '#95a5a6'
+    },
+    title="Clone Classes: Duplication vs. Size"
+)
+
+# Add quadrant lines (median values)
+median_members = scatter_data['numMembers'].median()
+median_loc = scatter_data['totalLOC'].median()
+
+fig_scatter.add_hline(
+    y=median_loc,
+    line_dash="dash",
+    line_color="gray",
+    opacity=0.5,
+    annotation_text="Median LOC",
+    annotation_position="right"
+)
+
+fig_scatter.add_vline(
+    x=median_members,
+    line_dash="dash",
+    line_color="gray",
+    opacity=0.5,
+    annotation_text="Median Members",
+    annotation_position="top"
+)
+
+fig_scatter.update_layout(
+    height=500,
+    xaxis_title="Number of Members (Duplication Level)",
+    yaxis_title="Total LOC (Clone Size)",
+    showlegend=True
+)
+
+# Make dots clickable (selection)
+fig_scatter.update_traces(
+    marker=dict(
+        line=dict(width=1, color='white'),
+        opacity=0.8
+    )
+)
+
+st.plotly_chart(fig_scatter, use_container_width=True)
+
+# Interpretation guide
+with st.expander("How to interpret this scatter plot"):
+    st.markdown("""
+    **Quadrants (divided by median lines):**
+    
+    - **Top-Right (High duplication × Large size):**  **CRITICAL** — High refactoring priority
+      - Many copies of large code fragments
+      - Example: Common utility functions copy-pasted everywhere
+    
+    - **Top-Left (Low duplication × Large size):**  **MODERATE** — Review for potential extraction
+      - Few copies, but each is large
+      - Might be domain-specific implementations
+    
+    - **Bottom-Right (High duplication × Small size):**  **MODERATE** — Potential boilerplate
+      - Many copies of small fragments
+      - Could be getters/setters, constants, or idioms
+    
+    - **Bottom-Left (Low duplication × Small size):**  **LOW PRIORITY**
+      - Few copies of small code
+      - Least maintenance burden
+    
+    **Bubble size** = Number of files involved (larger = more scattered)
+    
+    **Click a point** below to jump to that clone class!
+    """)
+
+# Interactive selection from scatter plot
+scatter_cols = st.columns([3, 1])
+with scatter_cols[0]:
+    selected_scatter_id = st.selectbox(
+        "Or click a clone class from the scatter plot data:",
+        options=scatter_data.sort_values('totalLOC', ascending=False)['id'].tolist(),
+        format_func=lambda cid: (
+            f"Class {cid}: {scatter_data[scatter_data['id']==cid]['type'].iloc[0]} | "
+            f"{scatter_data[scatter_data['id']==cid]['numMembers'].iloc[0]} members | "
+            f"{scatter_data[scatter_data['id']==cid]['totalLOC'].iloc[0]} LOC"
+        ),
+        key="scatter_selection"
+    )
+
+with scatter_cols[1]:
+    if st.button("Jump to Class", key="jump_scatter"):
+        selected_id = selected_scatter_id
+        st.rerun()
+
+st.markdown("---")
 
 # ---------- Select a specific clone class ----------
 selected_id = st.selectbox(
