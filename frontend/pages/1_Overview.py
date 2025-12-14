@@ -1,4 +1,3 @@
-# frontend/pages/1_Overview.py
 import streamlit as st
 from pathlib import Path
 import plotly.express as px

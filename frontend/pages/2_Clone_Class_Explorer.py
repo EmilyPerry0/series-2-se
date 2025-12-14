@@ -1,4 +1,3 @@
-# frontend/pages/2_Clone_Class_Explorer.py
 import streamlit as st
 from pathlib import Path
 import pandas as pd
