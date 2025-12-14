@@ -47,7 +47,7 @@ min_total_loc_class = st.sidebar.number_input(
     step=5,
 )
 
-# Optional: quick presets
+# quick presets
 preset = st.sidebar.radio(
     "Quick size filter",
     options=["None", "Ignore clones < 5 LOC", "Only big clones (>= 20 LOC)"],
@@ -57,7 +57,7 @@ if preset == "Ignore clones < 5 LOC":
 elif preset == "Only big clones (>= 20 LOC)":
     min_total_loc_class = max(min_total_loc_class, 20)
 
-# Optional: filter by file involvement
+# filter by file involvement
 file_filter_options = (
     ["<any file>"]
     + [f"{row.fileId}: {row.shortPath}" for _, row in file_df.sort_values("shortPath").iterrows()]
@@ -241,12 +241,26 @@ with scatter_cols[0]:
         key="scatter_selection"
     )
 
-with scatter_cols[1]:
-    if st.button("Jump to Class", key="jump_scatter"):
-        selected_id = selected_scatter_id
-        st.rerun()
+# # TODO selectbox error
+# with scatter_cols[1]:
+#     if st.button("Jump to Class", key="jump_scatter"):
+#         st.session_state['jump_scatter_clicked'] = True
+#         st.rerun()
 
-st.markdown("---")
+# st.markdown("---")
+
+# # Update the selected_id from scatter plot selection
+# if 'scatter_selection' in st.session_state and st.session_state.get('jump_scatter_clicked'):
+#     selected_id = st.session_state['scatter_selection']
+#     # Reset the button state
+#     st.session_state['jump_scatter_clicked'] = False
+# else:
+#     # Keep using the dropdown selection
+#     selected_id = st.selectbox(
+#         "Select a clone class to inspect",
+#         options=filtered_classes_df["id"].tolist(),
+#         format_func=lambda cid: f"Class {cid}",
+#     )
 
 # ---------- Select a specific clone class ----------
 selected_id = st.selectbox(
