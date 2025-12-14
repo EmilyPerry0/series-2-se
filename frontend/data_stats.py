@@ -80,24 +80,6 @@ def compute_file_stats(files: dict[int, str], clone_classes: list[dict]) -> pd.D
 
     return df.reset_index()
 
-def _shorten_filename(name: str, max_len: int = 18) -> str:
-    """
-    Shorten very long file names for axis labels.
-
-    Example:
-      'ExpressionFunctionReturnP1StringAndBinary.java'
-      -> 'Expression…Binary.java'
-    """
-    if len(name) <= max_len:
-        return name
-
-    # keep start and end, replace middle with ellipsis
-    keep = max_len - 1  # one char for ellipsis
-    front = keep // 2
-    back = keep - front
-    return f"{name[:front]}…{name[-back:]}"
-
-
 def build_clone_class_df(clone_classes: list[dict]) -> pd.DataFrame:
     """
     Turn the enriched clone_classes list into a DataFrame for UI:
