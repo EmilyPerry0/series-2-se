@@ -1,5 +1,5 @@
 Project Name: BenchmarkProject
-Maximum Clone Type: 1
+Clone Type: 1
 ====================
 Clone Class 1
 |java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(370,148,<15,38>,<21,5>)
@@ -9,24 +9,4 @@ Clone Class 2
 |java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(684,44,<20,3>,<20,47>)
 |java+compilationUnit:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(790,44,<21,8>,<21,52>)
 |java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(917,44,<29,8>,<29,52>)
-====================
-Clone Class 3
-|java+compilationUnit:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(1525,15,<40,8>,<40,23>)
-|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(1241,15,<36,8>,<36,23>)
-====================
-Clone Class 4
-|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(178,19,<10,8>,<10,27>)
-|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(3332,19,<100,8>,<100,27>)
-====================
-Clone Class 5
-|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1850,15,<68,3>,<68,18>)
-|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1388,15,<41,3>,<41,18>)
-|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1542,15,<50,3>,<50,18>)
-|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1696,15,<59,3>,<59,18>)
-====================
-Clone Class 6
-|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1715,14,<60,3>,<60,17>)
-|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1869,14,<69,3>,<69,17>)
-|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1407,14,<42,3>,<42,17>)
-|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1561,14,<51,3>,<51,17>)
 ====================

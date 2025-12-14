@@ -1,5 +1,5 @@
 Project Name: smallSQL
-Maximum Clone Type: 2
+Clone Type: 2
 ====================
 Clone Class 1
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptions.java|(3521,233,<76,40>,<83,5>)
@@ -16,39 +16,27 @@ Clone Class 3
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/TableResult.java|(10538,147,<384,1>,<387,5>)
 ====================
 Clone Class 4
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(11192,261,<317,46>,<322,5>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(6409,261,<191,47>,<196,5>)
-====================
-Clone Class 5
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestTransactions.java|(14720,124,<397,10>,<401,3>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestTransactions.java|(7597,124,<223,10>,<227,3>)
-====================
-Clone Class 6
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(12939,138,<264,8>,<264,146>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(4208,115,<94,8>,<94,123>)
 ====================
-Clone Class 7
+Clone Class 5
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestTransactions.java|(14857,776,<405,1>,<424,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestTransactions.java|(15641,778,<427,1>,<446,2>)
 ====================
-Clone Class 8
+Clone Class 6
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDataTypes.java|(13273,132,<335,4>,<337,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOperatoren.java|(11600,133,<261,4>,<263,5>)
 ====================
-Clone Class 9
+Clone Class 7
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/TableView.java|(1574,70,<49,1>,<49,71>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/IndexDescription.java|(1593,70,<46,1>,<46,71>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/TableView.java|(1647,70,<50,1>,<50,71>)
 ====================
-Clone Class 10
+Clone Class 8
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(10017,280,<211,8>,<211,288>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(8442,274,<183,8>,<183,282>)
 ====================
-Clone Class 11
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/GroupResult.java|(3480,160,<89,7>,<94,3>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/GroupResult.java|(4267,160,<111,36>,<116,3>)
-====================
-Clone Class 12
+Clone Class 9
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(13618,139,<318,4>,<320,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(12027,151,<288,4>,<290,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(12611,133,<300,4>,<302,5>)
@@ -67,18 +55,18 @@ Clone Class 12
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(20206,130,<597,4>,<599,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(19634,148,<585,4>,<587,5>)
 ====================
-Clone Class 13
+Clone Class 10
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Strings.java|(1887,155,<71,1>,<75,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/IndexDescriptions.java|(2351,175,<82,1>,<86,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ForeignKeys.java|(1929,163,<71,1>,<75,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Expressions.java|(3167,163,<130,1>,<134,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Columns.java|(4062,155,<156,1>,<160,2>)
 ====================
-Clone Class 14
+Clone Class 11
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionPower.java|(1339,391,<36,0>,<48,1>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionATan2.java|(1339,393,<36,0>,<48,1>)
 ====================
-Clone Class 15
+Clone Class 12
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(17418,148,<396,4>,<398,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(17264,148,<393,4>,<395,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(16569,149,<378,4>,<380,5>)
@@ -87,11 +75,11 @@ Clone Class 15
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(26674,139,<793,4>,<795,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(25986,139,<773,4>,<775,5>)
 ====================
-Clone Class 16
+Clone Class 13
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Table.java|(7421,266,<220,1>,<227,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/View.java|(4310,265,<137,1>,<144,2>)
 ====================
-Clone Class 17
+Clone Class 14
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOperatoren.java|(3733,92,<73,8>,<73,100>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestJoins.java|(3748,92,<75,8>,<75,100>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOperatoren.java|(3939,92,<75,8>,<75,100>)
@@ -99,23 +87,23 @@ Clone Class 17
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOperatoren.java|(3836,92,<74,8>,<74,100>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestJoins.java|(3851,92,<76,8>,<76,100>)
 ====================
-Clone Class 18
+Clone Class 15
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestGroupBy.java|(7850,168,<251,1>,<254,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestGroupBy.java|(8027,167,<257,1>,<260,2>)
 ====================
-Clone Class 19
+Clone Class 16
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionBitLen.java|(1366,599,<37,0>,<64,1>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionOctetLen.java|(1368,610,<37,0>,<64,1>)
 ====================
-Clone Class 20
+Clone Class 17
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(4356,498,<125,8>,<137,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(4858,372,<138,2>,<150,3>)
 ====================
-Clone Class 21
+Clone Class 18
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestLanguage.java|(6290,169,<218,8>,<221,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestLanguage.java|(6774,126,<229,12>,<231,13>)
 ====================
-Clone Class 22
+Clone Class 19
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(79462,122,<1985,4>,<1985,126>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(76144,124,<1960,4>,<1960,128>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(78662,134,<1976,4>,<1976,138>)
@@ -123,18 +111,18 @@ Clone Class 22
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(80434,111,<1995,1>,<1995,112>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(81458,108,<2003,1>,<2003,109>)
 ====================
-Clone Class 23
+Clone Class 20
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/CommandSelect.java|(4444,151,<123,8>,<127,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/CommandSelect.java|(4599,118,<128,2>,<132,3>)
 ====================
-Clone Class 24
+Clone Class 21
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(9815,264,<285,4>,<289,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(9281,261,<275,4>,<279,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(9017,258,<270,4>,<274,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(11715,271,<328,4>,<332,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(9548,261,<280,4>,<284,5>)
 ====================
-Clone Class 25
+Clone Class 22
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestJoins.java|(4324,78,<81,8>,<81,86>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOperatoren.java|(4576,78,<82,8>,<82,86>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOperatoren.java|(4131,78,<77,8>,<77,86>)
@@ -150,27 +138,23 @@ Clone Class 25
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestJoins.java|(4235,78,<80,8>,<80,86>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestJoins.java|(4591,78,<84,8>,<84,86>)
 ====================
-Clone Class 26
+Clone Class 23
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(14435,171,<333,4>,<335,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(10292,197,<254,4>,<256,5>)
 ====================
-Clone Class 27
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/MutableNumeric.java|(6715,112,<235,2>,<240,3>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/MutableNumeric.java|(4881,112,<167,2>,<172,3>)
-====================
-Clone Class 28
+Clone Class 24
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(1979,100,<61,6>,<65,3>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(12066,201,<292,15>,<297,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(2399,99,<75,6>,<79,3>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(30595,140,<734,11>,<738,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(30349,141,<726,11>,<730,9>)
 ====================
-Clone Class 29
+Clone Class 25
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestGroupBy.java|(8548,204,<274,1>,<277,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestGroupBy.java|(8203,167,<263,1>,<266,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestGroupBy.java|(8379,163,<269,1>,<272,2>)
 ====================
-Clone Class 30
+Clone Class 26
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestStatement.java|(4709,171,<131,8>,<136,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestAlterTable.java|(4060,222,<105,12>,<110,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptionMethods.java|(1963,228,<54,12>,<59,13>)
@@ -187,30 +171,30 @@ Clone Class 30
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptionMethods.java|(2207,222,<61,12>,<66,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptionMethods.java|(10039,170,<289,8>,<294,9>)
 ====================
-Clone Class 31
+Clone Class 27
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionArithmetic.java|(5094,272,<163,1>,<171,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionName.java|(2050,284,<64,4>,<72,5>)
 ====================
-Clone Class 32
+Clone Class 28
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptions.java|(4772,255,<114,4>,<120,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestJoins.java|(10182,245,<195,4>,<201,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestFunctions.java|(23670,253,<406,4>,<412,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDataTypes.java|(13003,262,<327,4>,<333,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOperatoren.java|(11337,255,<253,4>,<259,5>)
 ====================
-Clone Class 33
+Clone Class 29
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(4037,288,<108,4>,<116,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(3805,308,<113,4>,<121,5>)
 ====================
-Clone Class 34
+Clone Class 30
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSConnection.java|(4997,154,<150,13>,<153,14>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSConnection.java|(5157,126,<154,4>,<157,5>)
 ====================
-Clone Class 35
+Clone Class 31
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(11116,379,<319,4>,<328,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(7224,359,<202,4>,<211,5>)
 ====================
-Clone Class 36
+Clone Class 32
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(4082,243,<108,49>,<116,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(4495,255,<131,63>,<139,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(4677,245,<126,53>,<134,5>)
@@ -222,44 +206,44 @@ Clone Class 36
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(3590,247,<93,57>,<101,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(4378,244,<117,51>,<125,5>)
 ====================
-Clone Class 37
+Clone Class 33
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(5916,667,<198,1>,<223,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(6592,677,<226,1>,<251,2>)
 ====================
-Clone Class 38
+Clone Class 34
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Table.java|(6502,86,<193,8>,<195,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Table.java|(2864,89,<78,2>,<80,3>)
 ====================
-Clone Class 39
+Clone Class 35
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(18809,130,<567,4>,<569,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(11184,133,<270,4>,<272,5>)
 ====================
-Clone Class 40
+Clone Class 36
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(19930,134,<591,4>,<593,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(12329,137,<294,4>,<296,5>)
 ====================
-Clone Class 41
+Clone Class 37
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(4487,177,<132,4>,<135,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(4284,185,<126,4>,<129,5>)
 ====================
-Clone Class 42
+Clone Class 38
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(19353,133,<579,4>,<581,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(11740,136,<282,4>,<284,5>)
 ====================
-Clone Class 43
+Clone Class 39
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(5229,375,<144,4>,<153,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(5079,395,<149,4>,<158,5>)
 ====================
-Clone Class 44
+Clone Class 40
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(5480,307,<159,4>,<167,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(5610,287,<154,4>,<162,5>)
 ====================
-Clone Class 45
+Clone Class 41
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/TableView.java|(3629,102,<101,4>,<101,106>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/TableView.java|(3480,102,<99,4>,<99,106>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Column.java|(4059,104,<147,21>,<147,125>)
 ====================
-Clone Class 46
+Clone Class 42
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionValue.java|(7099,83,<224,7>,<224,90>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionValue.java|(4753,88,<164,7>,<164,95>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionValue.java|(6101,75,<196,7>,<196,82>)
@@ -273,131 +257,107 @@ Clone Class 46
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionValue.java|(7412,89,<231,7>,<231,96>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionValue.java|(4898,83,<167,7>,<167,90>)
 ====================
-Clone Class 47
+Clone Class 43
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSConnection.java|(6259,164,<189,68>,<193,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSConnection.java|(6680,161,<203,38>,<207,13>)
 ====================
-Clone Class 48
+Clone Class 44
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(4436,314,<131,4>,<139,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(4628,294,<126,4>,<134,5>)
 ====================
-Clone Class 49
+Clone Class 45
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(17411,161,<535,4>,<537,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(17259,146,<532,4>,<534,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(17107,146,<529,4>,<531,5>)
 ====================
-Clone Class 50
+Clone Class 46
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Strings.java|(1791,87,<63,29>,<68,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ForeignKeys.java|(1828,92,<63,38>,<68,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Expressions.java|(1961,86,<71,32>,<76,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/LongList.java|(1839,89,<67,27>,<72,2>)
 ====================
-Clone Class 51
+Clone Class 47
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(45965,104,<1256,29>,<1256,133>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(46214,104,<1259,32>,<1259,136>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(46469,114,<1262,32>,<1262,146>)
 ====================
-Clone Class 52
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnString.java|(2322,135,<84,1>,<87,2>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnP1StringAndBinary.java|(2383,135,<80,1>,<83,2>)
-====================
-Clone Class 53
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnP1StringAndBinary.java|(2002,119,<62,1>,<65,2>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnString.java|(1941,119,<66,1>,<69,2>)
-====================
-Clone Class 54
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnP1StringAndBinary.java|(1758,115,<50,1>,<53,2>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnString.java|(1697,115,<54,1>,<57,2>)
-====================
-Clone Class 55
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnString.java|(1559,131,<48,1>,<51,2>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnP1StringAndBinary.java|(1620,131,<44,1>,<47,2>)
-====================
-Clone Class 56
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnString.java|(2067,123,<72,1>,<75,2>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnP1StringAndBinary.java|(2128,123,<68,1>,<71,2>)
-====================
-Clone Class 57
+Clone Class 48
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(16824,135,<523,4>,<525,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(16675,143,<520,4>,<522,5>)
 ====================
-Clone Class 58
+Clone Class 49
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(8192,563,<207,12>,<219,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(13127,561,<321,12>,<333,13>)
 ====================
-Clone Class 59
+Clone Class 50
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSConnection.java|(12046,148,<380,99>,<384,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSConnection.java|(11781,152,<373,101>,<377,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSConnection.java|(12308,146,<387,100>,<391,5>)
 ====================
-Clone Class 60
+Clone Class 51
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(50855,272,<1332,32>,<1336,33>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(45022,240,<1239,24>,<1243,25>)
 ====================
-Clone Class 61
+Clone Class 52
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(10814,288,<313,4>,<317,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(10520,288,<308,4>,<312,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(11108,303,<318,4>,<322,5>)
 ====================
-Clone Class 62
+Clone Class 53
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/StoreImpl.java|(16341,92,<473,4>,<475,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/StoreImpl.java|(16185,78,<465,4>,<467,5>)
 ====================
-Clone Class 63
+Clone Class 54
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(17695,140,<666,47>,<671,3>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(21642,139,<811,18>,<816,3>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(5712,139,<187,18>,<192,3>)
 ====================
-Clone Class 64
+Clone Class 55
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(17578,169,<538,4>,<540,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(17753,172,<541,4>,<543,5>)
 ====================
-Clone Class 65
+Clone Class 56
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(31121,154,<922,2>,<924,3>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(30790,140,<913,2>,<916,3>)
 ====================
-Clone Class 66
+Clone Class 57
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLTokenizer.java|(4828,51,<111,16>,<111,67>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLTokenizer.java|(6706,51,<164,24>,<164,75>)
 ====================
-Clone Class 67
+Clone Class 58
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/DateTime.java|(21462,107,<700,1>,<702,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/DateTime.java|(21576,92,<705,1>,<707,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/DateTime.java|(21675,92,<710,1>,<712,2>)
 ====================
-Clone Class 68
+Clone Class 59
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(7694,177,<221,2>,<224,3>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(7312,177,<213,2>,<216,3>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(7493,197,<217,2>,<220,3>)
 ====================
-Clone Class 69
+Clone Class 60
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(77660,504,<1969,28>,<1969,532>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(10023,273,<211,14>,<211,287>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(8448,267,<183,14>,<183,281>)
 ====================
-Clone Class 70
+Clone Class 61
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Strings.java|(1763,115,<63,1>,<68,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ForeignKeys.java|(1791,129,<63,1>,<68,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Expressions.java|(1930,117,<71,1>,<76,2>)
 ====================
-Clone Class 71
+Clone Class 62
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/TableView.java|(3908,209,<105,3>,<113,3>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/IndexDescription.java|(6136,299,<186,9>,<194,9>)
 ====================
-Clone Class 72
+Clone Class 63
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionUCase.java|(1365,526,<37,0>,<62,1>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionLCase.java|(1365,526,<37,0>,<62,1>)
 ====================
-Clone Class 73
+Clone Class 64
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/DateTime.java|(4392,138,<149,1>,<152,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/DateTime.java|(4539,148,<155,1>,<158,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/DateTime.java|(4245,138,<143,1>,<146,2>)
 ====================
-Clone Class 74
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionRound.java|(1759,188,<50,2>,<60,3>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionTruncate.java|(1768,188,<50,2>,<60,3>)
-====================
-Clone Class 75
+Clone Class 65
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestGroupBy.java|(10137,128,<326,1>,<329,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestGroupBy.java|(6026,131,<186,1>,<189,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestGroupBy.java|(9168,128,<290,1>,<293,2>)
@@ -415,11 +375,11 @@ Clone Class 75
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestGroupBy.java|(5857,163,<181,1>,<184,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestGroupBy.java|(9592,133,<305,1>,<308,2>)
 ====================
-Clone Class 76
+Clone Class 66
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestTransactions.java|(5584,1061,<166,1>,<194,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestTransactions.java|(3539,1055,<107,1>,<135,2>)
 ====================
-Clone Class 77
+Clone Class 67
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(31480,341,<862,3>,<862,344>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(31827,342,<863,3>,<863,345>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(30435,344,<859,3>,<859,347>)
@@ -429,70 +389,57 @@ Clone Class 77
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(29731,334,<857,3>,<857,337>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(20932,370,<833,3>,<833,373>)
 ====================
-Clone Class 78
+Clone Class 68
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(14141,198,<281,8>,<281,206>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(4845,175,<104,8>,<104,183>)
 ====================
-Clone Class 79
+Clone Class 69
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(15161,206,<303,4>,<307,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestStatement.java|(5936,214,<160,4>,<165,5>)
 ====================
-Clone Class 80
+Clone Class 70
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnP1StringAndBinary.java|(2258,118,<74,1>,<77,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnString.java|(1819,115,<60,1>,<63,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnP1StringAndBinary.java|(1880,115,<56,1>,<59,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnString.java|(2197,118,<78,1>,<81,2>)
 ====================
-Clone Class 81
+Clone Class 71
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestGroupBy.java|(5357,494,<168,1>,<179,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestGroupBy.java|(4248,477,<141,1>,<152,2>)
 ====================
-Clone Class 82
+Clone Class 72
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Language/Language.java|(12108,343,<292,33>,<306,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Language/Language.java|(12780,353,<318,35>,<332,2>)
 ====================
-Clone Class 83
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionFloor.java|(1580,148,<46,4>,<50,5>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionAbs.java|(3596,148,<104,4>,<108,5>)
-====================
-Clone Class 84
+Clone Class 73
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Language/Language.java|(13314,178,<340,1>,<344,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Language/Language.java|(13138,171,<334,1>,<338,2>)
 ====================
-Clone Class 85
+Clone Class 74
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/MutableNumeric.java|(13631,876,<489,29>,<510,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/MutableNumeric.java|(14542,880,<512,31>,<533,5>)
 ====================
-Clone Class 86
+Clone Class 75
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(32688,76,<873,3>,<873,79>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(20209,93,<822,3>,<822,96>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(16672,96,<754,3>,<754,99>)
 ====================
-Clone Class 87
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/CommandSelect.java|(13159,87,<418,8>,<418,95>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/CommandSelect.java|(14713,87,<462,8>,<462,95>)
-====================
-Clone Class 88
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnFloat.java|(2344,113,<76,42>,<80,5>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionFloor.java|(1615,113,<46,39>,<50,5>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionAbs.java|(3631,113,<104,39>,<108,5>)
-====================
-Clone Class 89
+Clone Class 76
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(2390,179,<74,46>,<80,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(30335,197,<725,47>,<731,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(30581,196,<733,45>,<739,5>)
 ====================
-Clone Class 90
+Clone Class 77
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptions.java|(3360,111,<70,4>,<73,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestJoins.java|(4951,111,<91,4>,<94,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestFunctions.java|(22395,115,<368,4>,<371,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOperatoren.java|(5025,116,<90,4>,<93,5>)
 ====================
-Clone Class 91
+Clone Class 78
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Expressions.java|(3046,115,<124,29>,<128,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Strings.java|(2078,132,<78,30>,<82,5>)
 ====================
-Clone Class 92
+Clone Class 79
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Database.java|(18207,46,<505,2>,<505,48>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(15044,44,<719,2>,<719,46>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Database.java|(13990,46,<395,2>,<395,48>)
@@ -501,25 +448,25 @@ Clone Class 92
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Database.java|(11795,50,<338,2>,<338,52>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Database.java|(15775,46,<438,2>,<438,48>)
 ====================
-Clone Class 93
+Clone Class 80
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSConnection.java|(8898,217,<292,4>,<294,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSConnection.java|(9133,212,<297,4>,<299,5>)
 ====================
-Clone Class 94
+Clone Class 81
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionArithmetic.java|(6533,498,<206,8>,<214,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionArithmetic.java|(8109,476,<248,8>,<256,9>)
 ====================
-Clone Class 95
+Clone Class 82
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(35568,300,<986,4>,<989,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(35265,297,<982,4>,<985,5>)
 ====================
-Clone Class 96
+Clone Class 83
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(28456,230,<846,4>,<849,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(28067,226,<835,4>,<838,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(29248,234,<868,4>,<871,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(28852,230,<857,4>,<860,5>)
 ====================
-Clone Class 97
+Clone Class 84
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionLog.java|(1337,266,<36,0>,<44,1>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionACos.java|(1338,269,<36,0>,<44,1>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionTan.java|(1337,266,<36,0>,<44,1>)
@@ -533,124 +480,104 @@ Clone Class 97
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionSqrt.java|(1338,269,<36,0>,<44,1>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionATan.java|(1338,269,<36,0>,<44,1>)
 ====================
-Clone Class 98
+Clone Class 85
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(8342,132,<294,2>,<298,3>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(7756,134,<271,2>,<275,3>)
 ====================
-Clone Class 99
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Index.java|(13999,134,<407,3>,<409,20>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Index.java|(13388,134,<382,3>,<384,20>)
-====================
-Clone Class 100
+Clone Class 86
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ViewResult.java|(2814,110,<105,1>,<107,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ViewResult.java|(2930,110,<109,1>,<111,2>)
 ====================
-Clone Class 101
+Clone Class 87
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(6060,208,<175,4>,<178,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(5508,205,<162,4>,<165,5>)
 ====================
-Clone Class 102
+Clone Class 88
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(7491,200,<164,8>,<169,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(4329,182,<132,2>,<137,3>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(5016,182,<160,2>,<165,3>)
 ====================
-Clone Class 103
+Clone Class 89
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(15716,133,<360,4>,<362,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(8769,124,<246,4>,<248,5>)
 ====================
-Clone Class 104
+Clone Class 90
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/MemoryResult.java|(7092,128,<296,1>,<298,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/MemoryResult.java|(7229,128,<301,1>,<303,2>)
 ====================
-Clone Class 105
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Index.java|(3817,129,<103,12>,<106,50>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Index.java|(4844,129,<130,12>,<133,50>)
-====================
-Clone Class 106
+Clone Class 91
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Index.java|(12875,332,<359,3>,<372,4>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Index.java|(14315,322,<418,3>,<431,4>)
 ====================
-Clone Class 107
+Clone Class 92
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionArithmetic.java|(21213,875,<586,20>,<600,21>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionArithmetic.java|(24150,891,<636,20>,<650,21>)
 ====================
-Clone Class 108
+Clone Class 93
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(13070,206,<391,1>,<398,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(12850,205,<381,1>,<388,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(13288,209,<401,4>,<408,5>)
 ====================
-Clone Class 109
+Clone Class 94
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestAlterTable2.java|(2267,69,<65,8>,<65,77>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(6916,75,<148,2>,<148,77>)
 ====================
-Clone Class 110
+Clone Class 95
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnInt.java|(1995,125,<75,1>,<78,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionReturnFloat.java|(2185,113,<71,1>,<74,5>)
 ====================
-Clone Class 111
+Clone Class 96
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(64149,106,<1668,4>,<1668,110>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(63044,96,<1640,4>,<1640,100>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(62837,96,<1636,4>,<1636,100>)
 ====================
-Clone Class 112
+Clone Class 97
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/CommandDrop.java|(1505,115,<40,68>,<45,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/StorePage.java|(1713,109,<49,74>,<54,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/CreateFile.java|(1707,119,<48,81>,<53,5>)
 ====================
-Clone Class 113
+Clone Class 98
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/IndexScrollStatus.java|(3062,385,<89,5>,<99,6>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/IndexScrollStatus.java|(4100,428,<120,5>,<131,41>)
 ====================
-Clone Class 114
+Clone Class 99
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(5081,188,<150,4>,<153,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(5287,203,<156,4>,<159,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(4875,188,<144,4>,<147,5>)
 ====================
-Clone Class 115
+Clone Class 100
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(74896,110,<1945,4>,<1947,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(75014,112,<1949,4>,<1951,5>)
 ====================
-Clone Class 116
+Clone Class 101
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(6896,118,<172,12>,<175,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(9038,107,<225,12>,<228,13>)
 ====================
-Clone Class 117
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOperatoren.java|(12004,110,<275,4>,<279,5>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestJoins.java|(10696,110,<212,4>,<216,5>)
-====================
-Clone Class 118
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(5082,96,<163,8>,<165,9>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(4825,96,<154,8>,<156,9>)
-====================
-Clone Class 119
+Clone Class 102
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(19084,127,<573,4>,<575,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(11465,130,<276,4>,<278,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(9922,170,<248,4>,<250,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(10886,144,<264,4>,<266,5>)
 ====================
-Clone Class 120
+Clone Class 103
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(12097,177,<351,4>,<357,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(11758,217,<337,4>,<343,5>)
 ====================
-Clone Class 121
+Clone Class 104
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestMoneyRounding.java|(2096,426,<64,4>,<73,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestMoneyRounding.java|(3413,353,<101,1>,<110,2>)
 ====================
-Clone Class 122
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOperatoren.java|(11745,251,<267,4>,<273,5>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestJoins.java|(10437,251,<204,4>,<210,5>)
-====================
-Clone Class 123
+Clone Class 105
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/MutableNumeric.java|(4310,99,<143,54>,<147,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionName.java|(4445,92,<151,64>,<155,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSSavepoint.java|(1591,86,<48,55>,<52,2>)
 ====================
-Clone Class 124
+Clone Class 106
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Table.java|(7488,199,<221,56>,<227,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/View.java|(4377,198,<138,56>,<144,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/IndexDescription.java|(6874,179,<213,67>,<219,2>)
 ====================
-Clone Class 125
+Clone Class 107
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Expressions.java|(1774,147,<64,1>,<68,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/IndexDescriptions.java|(1829,195,<62,1>,<67,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/DataSources.java|(1510,147,<48,1>,<52,2>)
@@ -658,22 +585,22 @@ Clone Class 125
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ForeignKeys.java|(1628,154,<56,1>,<60,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Strings.java|(1604,150,<56,1>,<60,2>)
 ====================
-Clone Class 126
+Clone Class 108
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/LongTreeList.java|(16900,77,<591,37>,<593,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/MemoryStream.java|(3493,81,<124,16>,<126,2>)
 ====================
-Clone Class 127
+Clone Class 109
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunction.java|(3083,433,<101,4>,<111,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunction.java|(3524,451,<113,4>,<123,5>)
 ====================
-Clone Class 128
+Clone Class 110
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestAlterTable2.java|(2836,89,<77,8>,<77,97>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(21261,90,<797,2>,<797,92>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOther.java|(3841,95,<96,2>,<96,97>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestAlterTable2.java|(1488,89,<47,8>,<47,97>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestAlterTable2.java|(879,107,<35,8>,<35,115>)
 ====================
-Clone Class 129
+Clone Class 111
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptionMethods.java|(5970,256,<170,12>,<175,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestScrollable.java|(7451,198,<173,8>,<178,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptionMethods.java|(9224,185,<263,8>,<268,9>)
@@ -687,19 +614,11 @@ Clone Class 129
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptionMethods.java|(9419,186,<269,8>,<274,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptionMethods.java|(9034,180,<257,8>,<262,9>)
 ====================
-Clone Class 130
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestTransactions.java|(6488,153,<188,10>,<193,3>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestTransactions.java|(3374,153,<98,10>,<103,3>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestTransactions.java|(9935,153,<281,10>,<286,3>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestTransactions.java|(13685,153,<365,10>,<370,3>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestTransactions.java|(4437,153,<129,10>,<134,3>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestTransactions.java|(5420,153,<157,10>,<162,3>)
-====================
-Clone Class 131
+Clone Class 112
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/IndexNode.java|(7217,136,<241,99>,<244,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/IndexNode.java|(7459,133,<247,98>,<250,2>)
 ====================
-Clone Class 132
+Clone Class 113
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(10104,52,<297,8>,<297,60>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(9728,52,<289,8>,<289,60>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(10984,53,<312,8>,<312,61>)
@@ -717,51 +636,47 @@ Clone Class 132
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(9358,51,<282,8>,<282,59>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(9114,51,<278,8>,<278,59>)
 ====================
-Clone Class 133
+Clone Class 114
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SmallSQLException.java|(3378,101,<110,1>,<113,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SmallSQLException.java|(3488,101,<115,1>,<118,2>)
 ====================
-Clone Class 134
+Clone Class 115
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(16045,183,<390,12>,<392,69>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(7213,184,<180,12>,<182,69>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(4980,183,<121,12>,<123,69>)
 ====================
-Clone Class 135
+Clone Class 116
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(3242,289,<84,4>,<92,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(6929,289,<193,4>,<201,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(10087,312,<289,4>,<297,5>)
 ====================
-Clone Class 136
+Clone Class 117
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(8631,121,<265,13>,<265,134>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/UnionAll.java|(2294,128,<72,5>,<72,133>)
 ====================
-Clone Class 137
+Clone Class 118
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(8687,177,<238,12>,<240,58>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(8500,173,<235,12>,<237,58>)
 ====================
-Clone Class 138
+Clone Class 119
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Table.java|(12314,314,<357,6>,<364,7>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Table.java|(13602,350,<388,20>,<394,21>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Table.java|(12895,245,<370,6>,<376,7>)
 ====================
-Clone Class 139
+Clone Class 120
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(8318,168,<232,12>,<234,58>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(8140,164,<229,12>,<231,58>)
 ====================
-Clone Class 140
+Clone Class 121
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestAlterTable.java|(3085,270,<81,12>,<86,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestAlterTable2.java|(1961,229,<58,8>,<63,9>)
 ====================
-Clone Class 141
+Clone Class 122
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestThreads.java|(1525,188,<59,8>,<63,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestThreads.java|(3208,204,<106,12>,<110,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestThreads.java|(5191,204,<160,12>,<164,13>)
 ====================
-Clone Class 142
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestAlterTable.java|(1333,187,<39,4>,<45,5>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestAlterTable2.java|(297,187,<20,4>,<26,5>)
-====================
-Clone Class 143
+Clone Class 123
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(6876,247,<202,4>,<205,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(10495,249,<257,4>,<260,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(8091,239,<220,4>,<223,5>)
@@ -775,128 +690,112 @@ Clone Class 143
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(24353,213,<729,4>,<732,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(23895,209,<717,4>,<720,5>)
 ====================
-Clone Class 144
+Clone Class 124
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestScrollable.java|(1466,1036,<43,1>,<61,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestScrollable.java|(4338,1050,<108,1>,<126,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestScrollable.java|(2921,1045,<76,1>,<94,2>)
 ====================
-Clone Class 145
+Clone Class 125
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/tools/CommandLine.java|(2403,129,<69,8>,<72,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/tools/CommandLine.java|(2604,136,<75,12>,<78,13>)
 ====================
-Clone Class 146
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/TableResult.java|(5845,114,<186,5>,<186,119>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/TableResult.java|(5522,114,<180,6>,<180,120>)
-====================
-Clone Class 147
+Clone Class 126
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Language/Language_de.java|(1334,12059,<35,0>,<184,1>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Language/Language_it.java|(1336,10481,<35,0>,<185,1>)
 ====================
-Clone Class 148
+Clone Class 127
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(19492,136,<582,4>,<584,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(11882,139,<285,4>,<287,5>)
 ====================
-Clone Class 149
+Clone Class 128
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(4756,317,<140,4>,<148,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(4928,295,<135,4>,<143,5>)
 ====================
-Clone Class 150
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(21626,155,<811,2>,<816,3>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(5696,155,<187,2>,<192,3>)
-====================
-Clone Class 151
+Clone Class 129
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(24908,379,<844,3>,<844,382>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(25293,379,<845,3>,<845,382>)
 ====================
-Clone Class 152
+Clone Class 130
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(22787,349,<838,3>,<838,352>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(23142,345,<839,3>,<839,348>)
 ====================
-Clone Class 153
+Clone Class 131
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(9347,268,<240,4>,<243,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(8829,253,<232,4>,<235,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(7589,254,<212,4>,<215,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(9088,253,<236,4>,<239,5>)
 ====================
-Clone Class 154
+Clone Class 132
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(4119,311,<122,4>,<130,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(4331,291,<117,4>,<125,5>)
 ====================
-Clone Class 155
+Clone Class 133
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(18664,139,<564,4>,<566,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(11036,142,<267,4>,<269,5>)
 ====================
-Clone Class 156
+Clone Class 134
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(3244,320,<98,4>,<106,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(3537,300,<93,4>,<101,5>)
 ====================
-Clone Class 157
+Clone Class 135
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(21308,369,<834,3>,<834,372>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(29015,369,<855,3>,<855,372>)
 ====================
-Clone Class 158
+Clone Class 136
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(18945,133,<570,4>,<572,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(11323,136,<273,4>,<275,5>)
 ====================
-Clone Class 159
+Clone Class 137
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(19217,130,<576,4>,<578,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(11601,133,<279,4>,<281,5>)
 ====================
-Clone Class 160
+Clone Class 138
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(26831,533,<798,4>,<810,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(26143,513,<778,4>,<790,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(25455,513,<758,4>,<770,5>)
 ====================
-Clone Class 161
+Clone Class 139
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLTokenizer.java|(8559,39,<198,43>,<198,82>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLTokenizer.java|(8119,39,<191,43>,<191,82>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLTokenizer.java|(7749,39,<185,43>,<185,82>)
 ====================
-Clone Class 162
+Clone Class 140
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/IndexDescription.java|(7889,82,<250,2>,<252,3>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(16132,109,<484,13>,<486,14>)
 ====================
-Clone Class 163
+Clone Class 141
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(75710,196,<1957,31>,<1957,227>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(12945,131,<264,14>,<264,145>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(79791,201,<1988,31>,<1988,232>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(4214,108,<94,14>,<94,122>)
 ====================
-Clone Class 164
+Clone Class 142
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(75683,224,<1957,4>,<1957,228>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(79764,229,<1988,4>,<1988,233>)
 ====================
-Clone Class 165
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(11286,231,<234,8>,<234,239>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(19973,231,<821,3>,<821,234>)
-====================
-Clone Class 166
+Clone Class 143
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLTokenizer.java|(35322,361,<870,4>,<877,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLTokenizer.java|(25545,216,<635,4>,<642,5>)
 ====================
-Clone Class 167
+Clone Class 144
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(74143,166,<1925,4>,<1928,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(74720,168,<1940,4>,<1943,5>)
 ====================
-Clone Class 168
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(8472,113,<262,23>,<263,66>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(6881,113,<218,27>,<219,66>)
-====================
-Clone Class 169
+Clone Class 145
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(12063,240,<292,12>,<297,49>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(2395,167,<75,2>,<79,67>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(30346,179,<726,8>,<730,44>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(30592,178,<734,8>,<738,44>)
 ====================
-Clone Class 170
+Clone Class 146
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLTokenizer.java|(15691,188,<394,1>,<399,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLTokenizer.java|(14306,243,<363,4>,<368,5>)
 ====================
-Clone Class 171
+Clone Class 147
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(6474,103,<189,9>,<190,55>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(4886,105,<144,5>,<145,56>)
 ====================
-Clone Class 172
+Clone Class 148
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(26803,369,<849,3>,<849,372>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(25678,369,<846,3>,<846,372>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(27178,369,<850,3>,<850,372>)
@@ -907,53 +806,49 @@ Clone Class 172
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(26428,369,<848,3>,<848,372>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(27925,370,<852,3>,<852,373>)
 ====================
-Clone Class 173
+Clone Class 149
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(30540,237,<733,4>,<739,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(30292,240,<725,4>,<731,5>)
 ====================
-Clone Class 174
+Clone Class 150
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(13946,152,<324,4>,<326,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(14262,167,<330,4>,<332,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(14104,152,<327,4>,<329,5>)
 ====================
-Clone Class 175
+Clone Class 151
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/AllTests.java|(4604,166,<126,8>,<129,6>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDataTypes.java|(13312,93,<335,43>,<337,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOperatoren.java|(11639,94,<261,43>,<263,5>)
 ====================
-Clone Class 176
+Clone Class 152
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSStatement.java|(6966,346,<269,13>,<276,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(8312,261,<247,5>,<254,4>)
 ====================
-Clone Class 177
+Clone Class 153
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionCase.java|(4293,188,<185,1>,<191,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionCase.java|(4489,180,<194,1>,<200,2>)
 ====================
-Clone Class 178
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/LongTreeList.java|(9497,103,<333,4>,<336,5>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/LongTreeList.java|(10815,103,<378,4>,<381,5>)
-====================
-Clone Class 179
+Clone Class 154
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(26324,80,<620,12>,<622,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(27756,80,<657,12>,<659,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionRepeat.java|(2172,71,<66,8>,<68,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionRepeat.java|(1841,72,<54,8>,<56,9>)
 ====================
-Clone Class 180
+Clone Class 155
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionMonth.java|(1365,360,<37,0>,<54,1>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionDayOfYear.java|(1369,372,<37,0>,<54,1>)
 ====================
-Clone Class 181
+Clone Class 156
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(6369,282,<205,43>,<212,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BasicTestCase.java|(3576,237,<102,48>,<109,2>)
 ====================
-Clone Class 182
+Clone Class 157
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(24554,348,<843,3>,<843,351>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(28301,351,<853,3>,<853,354>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(28658,351,<854,3>,<854,354>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(24201,347,<842,3>,<842,350>)
 ====================
-Clone Class 183
+Clone Class 158
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(20670,173,<606,4>,<608,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(20493,171,<603,4>,<605,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(12904,174,<306,4>,<308,5>)
@@ -963,46 +858,42 @@ Clone Class 183
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(13084,176,<309,4>,<311,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(13763,177,<321,4>,<323,5>)
 ====================
-Clone Class 184
+Clone Class 159
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDataTypes.java|(4549,89,<110,16>,<110,105>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDataTypes.java|(4714,85,<113,16>,<113,101>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDataTypes.java|(5024,89,<119,16>,<119,105>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDataTypes.java|(5218,92,<123,16>,<123,108>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDataTypes.java|(4394,80,<107,16>,<107,96>)
 ====================
-Clone Class 185
+Clone Class 160
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(2363,127,<67,1>,<69,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(2077,149,<59,4>,<61,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Utils.java|(2231,127,<63,1>,<65,2>)
 ====================
-Clone Class 186
+Clone Class 161
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Command.java|(1815,121,<62,1>,<65,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SortedResult.java|(2427,117,<73,1>,<76,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Where.java|(1513,103,<44,1>,<47,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/TableView.java|(2540,92,<70,1>,<73,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Distinct.java|(1555,121,<47,1>,<50,2>)
 ====================
-Clone Class 187
+Clone Class 162
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Expression.java|(3022,89,<100,12>,<102,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/CommandDrop.java|(2198,95,<58,17>,<60,18>)
 ====================
-Clone Class 188
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionConvert.java|(4154,146,<142,29>,<146,5>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionConvert.java|(4476,146,<153,30>,<157,5>)
-====================
-Clone Class 189
+Clone Class 163
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/TableResult.java|(9629,141,<354,1>,<357,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/TableResult.java|(10076,143,<369,1>,<372,5>)
 ====================
-Clone Class 190
+Clone Class 164
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/StoreImpl.java|(17929,188,<523,4>,<528,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/MemoryStream.java|(4339,162,<157,1>,<162,2>)
 ====================
-Clone Class 191
+Clone Class 165
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Language/Language.java|(23228,5376,<494,1>,<628,3>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Language/Language.java|(13722,9336,<354,1>,<488,3>)
 ====================
-Clone Class 192
+Clone Class 166
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(27620,78,<655,12>,<655,90>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(26444,76,<624,12>,<624,88>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(28621,55,<674,12>,<674,67>)
@@ -1010,42 +901,42 @@ Clone Class 192
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(27876,76,<661,12>,<661,88>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/BenchTest.java|(26945,55,<633,12>,<633,67>)
 ====================
-Clone Class 193
+Clone Class 167
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(11277,655,<414,1>,<437,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(9182,647,<329,1>,<352,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(13282,638,<493,1>,<516,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(12629,645,<467,1>,<490,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(13928,633,<519,1>,<542,2>)
 ====================
-Clone Class 194
+Clone Class 168
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestLanguage.java|(7526,399,<251,12>,<259,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestLanguage.java|(7050,309,<237,3>,<245,4>)
 ====================
-Clone Class 195
+Clone Class 169
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionTimestampAdd.java|(3128,163,<96,34>,<100,4>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionTimestampAdd.java|(2721,164,<86,36>,<90,4>)
 ====================
-Clone Class 196
+Clone Class 170
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(19244,808,<729,1>,<757,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOrderBy.java|(18440,796,<698,1>,<726,2>)
 ====================
-Clone Class 197
+Clone Class 171
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(5731,311,<168,4>,<172,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSPreparedStatement.java|(8684,315,<263,4>,<267,5>)
 ====================
-Clone Class 198
+Clone Class 172
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSConnection.java|(3972,130,<109,4>,<111,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSConnection.java|(3831,135,<106,4>,<108,5>)
 ====================
-Clone Class 199
+Clone Class 173
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptionMethods.java|(3874,224,<110,12>,<115,13>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptionMethods.java|(4114,224,<117,12>,<122,13>)
 ====================
-Clone Class 200
+Clone Class 174
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptionMethods.java|(6322,607,<182,4>,<196,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestExceptionMethods.java|(5715,597,<165,4>,<179,5>)
 ====================
-Clone Class 201
+Clone Class 175
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(6501,357,<190,4>,<199,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(6231,322,<173,4>,<182,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(6153,342,<180,4>,<189,5>)
@@ -1053,85 +944,65 @@ Clone Class 201
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(6559,364,<183,4>,<192,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSCallableStatement.java|(5903,322,<163,4>,<172,5>)
 ====================
-Clone Class 202
+Clone Class 176
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(13918,213,<280,8>,<280,221>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(13265,196,<671,2>,<671,198>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(4639,196,<103,8>,<103,204>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(32471,212,<872,3>,<872,215>)
 ====================
-Clone Class 203
+Clone Class 177
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(22433,348,<837,3>,<837,351>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(31137,337,<861,3>,<861,340>)
 ====================
-Clone Class 204
+Clone Class 178
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(20549,353,<831,2>,<831,355>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(16365,302,<753,3>,<753,305>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(8130,302,<182,8>,<182,310>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(9682,325,<210,8>,<210,333>)
 ====================
-Clone Class 205
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/MutableNumeric.java|(14192,102,<503,16>,<504,80>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/MutableNumeric.java|(16051,102,<550,16>,<551,80>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/MutableNumeric.java|(13078,102,<474,16>,<475,80>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/MutableNumeric.java|(15105,102,<526,16>,<527,80>)
-====================
-Clone Class 206
+Clone Class 179
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(30201,158,<849,6>,<853,7>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(29819,154,<839,5>,<843,6>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(29050,160,<814,5>,<818,6>)
 ====================
-Clone Class 207
+Clone Class 180
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(78802,149,<1977,4>,<1977,153>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(75406,131,<1955,4>,<1955,135>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(75913,150,<1958,4>,<1958,154>)
 ====================
-Clone Class 208
+Clone Class 181
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/TableViewMap.java|(2422,96,<74,4>,<76,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/TableViewMap.java|(2213,90,<64,4>,<66,5>)
 ====================
-Clone Class 209
+Clone Class 182
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(74449,256,<1932,8>,<1937,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(12014,232,<352,5>,<357,6>)
 ====================
-Clone Class 210
+Clone Class 183
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/StoreImpl.java|(3447,124,<85,81>,<90,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ForeignKey.java|(1718,93,<48,85>,<53,2>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/Join.java|(1837,128,<52,75>,<57,5>)
 ====================
-Clone Class 211
+Clone Class 184
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(13840,218,<422,4>,<429,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSResultSet.java|(14076,220,<432,4>,<439,5>)
 ====================
-Clone Class 212
+Clone Class 185
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionHour.java|(1364,355,<37,0>,<54,1>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionDayOfMonth.java|(1370,366,<37,0>,<54,1>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionMinute.java|(1366,361,<37,0>,<54,1>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/ExpressionFunctionYear.java|(1365,355,<37,0>,<54,1>)
 ====================
-Clone Class 213
+Clone Class 186
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/FileIndex.java|(2816,113,<85,4>,<88,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/CommandInsert.java|(1812,94,<49,4>,<52,5>)
 ====================
-Clone Class 214
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SSDatabaseMetaData.java|(13738,165,<678,2>,<678,167>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDBMetaData.java|(5152,165,<110,8>,<110,173>)
-====================
-Clone Class 215
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/StoreImpl.java|(20661,104,<598,8>,<598,112>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/database/StoreImpl.java|(19439,104,<565,8>,<565,112>)
-====================
-Clone Class 216
+Clone Class 187
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(14833,130,<438,2>,<441,9>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/database/SQLParser.java|(14723,106,<434,2>,<437,3>)
 ====================
-Clone Class 217
+Clone Class 188
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestAlterTable2.java|(2472,575,<71,4>,<80,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestAlterTable2.java|(1126,573,<41,4>,<50,5>)
 |java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestAlterTable2.java|(498,610,<29,4>,<38,5>)
-====================
-Clone Class 218
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestOperatoren.java|(5149,301,<95,4>,<104,5>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestDataTypes.java|(3053,301,<68,4>,<77,5>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestMoneyRounding.java|(1787,301,<53,4>,<62,5>)
-|java+compilationUnit:///smallsql0.21_src/src/smallsql/junit/TestFunctions.java|(22524,301,<374,4>,<383,5>)
 ====================
