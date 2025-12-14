@@ -1,0 +1,41 @@
+Project Name: BenchmarkProject
+Maximum Clone Type: 2
+====================
+Clone Class 1
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(171,43,<9,38>,<12,1>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(142,61,<8,43>,<11,5>)
+====================
+Clone Class 2
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(370,148,<15,38>,<21,5>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(225,148,<7,50>,<13,5>)
+====================
+Clone Class 3
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(1705,402,<48,4>,<57,5>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(2297,396,<66,4>,<75,5>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1504,152,<49,0>,<56,1>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(1893,398,<55,4>,<64,5>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(2113,413,<59,4>,<69,55>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(2699,380,<77,4>,<86,5>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(1319,380,<37,4>,<46,5>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(916,397,<25,4>,<35,5>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1658,152,<58,0>,<65,1>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(839,440,<26,0>,<37,49>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(973,411,<32,4>,<42,5>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(1390,497,<44,4>,<53,5>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1812,152,<67,0>,<74,1>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(1281,221,<39,0>,<47,1>)
+====================
+Clone Class 4
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(684,44,<20,3>,<20,47>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(790,44,<21,8>,<21,52>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(917,44,<29,8>,<29,52>)
+====================
+Clone Class 5
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(815,41,<27,8>,<27,49>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Order.java|(544,136,<18,3>,<19,78>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/Item.java|(865,43,<28,8>,<28,51>)
+====================
+Clone Class 6
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(733,48,<20,8>,<20,56>)
+|java+compilationUnit:///benchmarkProject/src/benchmarkProject/OrderProcessor.java|(612,112,<18,8>,<19,54>)
+====================
