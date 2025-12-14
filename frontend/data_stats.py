@@ -235,3 +235,30 @@ def build_file_coupling_matrix(
 
     df = pd.DataFrame(mat2, index=labels, columns=labels)
     return df
+
+def build_class_file_distribution(cc: dict,
+                                  file_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    For a single clone class cc:
+    returns a DataFrame with columns:
+      group (e.g. 'Clone 5'),
+      file (short path),
+      loc (sum of LOC for that file in this class)
+    """
+    per_file = {}
+
+    for m in cc["members"]:
+        fid = m["fileId"]
+        loc = m.get("loc", m["endLine"] - m["beginLine"] + 1)
+        per_file.setdefault(fid, 0)
+        per_file[fid] += loc
+
+    rows = []
+    for fid, loc in per_file.items():
+        short = file_df[file_df["fileId"] == fid]["shortPath"].iloc[0]
+        rows.append({
+            "group": f"Clone {cc['id']}",
+            "file": short,
+            "loc": int(loc),
+        })
+    return pd.DataFrame(rows)

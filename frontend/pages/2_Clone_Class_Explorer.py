@@ -2,9 +2,9 @@
 import streamlit as st
 from pathlib import Path
 import pandas as pd
-
+import plotly.express as px
 from data_loader import load_clone_data
-from data_stats import enrich_clone_classes, compute_file_stats, build_clone_class_df
+from data_stats import enrich_clone_classes, compute_file_stats, build_clone_class_df, build_class_file_distribution
 from utils import read_code_snippet, choose_dataset
 
 
@@ -179,6 +179,31 @@ st.dataframe(
     width='stretch',
     hide_index=True,
 )
+
+st.subheader("Distribution of this clone class over files")
+
+dist_df = build_class_file_distribution(selected_class, file_df)
+
+if not dist_df.empty:
+    # Treemap: parent = clone class, children = files
+    fig_class_tree = px.treemap(
+        dist_df,
+        path=["group", "file"],   # hierarchy: Clone X -> File
+        values="loc",
+    )
+    st.plotly_chart(fig_class_tree)
+
+    # Simple bar chart:
+    st.caption("Cloned LOC per file (within this class)")
+    fig_class_bar = px.bar(
+        dist_df,
+        x="file",
+        y="loc",
+        labels={"file": "File", "loc": "LOC in this clone class"},
+    )
+    st.plotly_chart(fig_class_bar)
+else:
+    st.info("No members found for this clone class.")
 
 # ---------- Code snippets ----------
 st.subheader("Code snippets")
