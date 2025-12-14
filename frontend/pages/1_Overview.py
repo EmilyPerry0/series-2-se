@@ -156,3 +156,18 @@ fig_treemap = px.treemap(
 )
 
 st.plotly_chart(fig_treemap)
+
+# ---------- Heatmap ----------
+st.markdown("---")
+st.subheader("File–file clone coupling (heatmap)")
+
+coupling_df = build_file_coupling_matrix(filtered_cc_for_files, file_df)
+
+if not coupling_df.empty and (coupling_df.values != 0).any():
+    fig_coupling = px.imshow(
+        coupling_df,
+        labels=dict(x="File", y="File", color="Cloned LOC shared"),
+    )
+    st.plotly_chart(fig_coupling, use_container_width=True)
+else:
+    st.info("No shared clones between files for the current filters.")

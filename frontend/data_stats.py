@@ -137,3 +137,60 @@ def build_treemap_nodes(file_df: pd.DataFrame, project_name: str) -> pd.DataFram
         })
 
     return pd.DataFrame(rows)
+
+
+def build_file_coupling_matrix(clone_classes: list[dict],
+                               file_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Build a symmetric matrix where cell (i,j) = total cloned LOC shared
+    between file i and file j (over all *given* clone classes).
+
+    Assumptions:
+      - each clone class has fields: id, type, members
+      - each member has: fileId, beginLine, endLine, and we already ran
+        enrich_clone_classes() so member["loc"] is present.
+
+    file_df must be the result of compute_file_stats(...), so it has:
+      - fileId
+      - shortPath
+    """
+    if file_df.empty:
+        return pd.DataFrame()
+
+    # Only files that actually appear in file_df
+    id_to_short = {row.fileId: row.shortPath for row in file_df.itertuples()}
+    file_ids = list(id_to_short.keys())
+    n = len(file_ids)
+
+    # If there is only one file with clones, the coupling is trivial
+    if n < 2:
+        name = id_to_short[file_ids[0]]
+        return pd.DataFrame([[0]], index=[name], columns=[name])
+
+    # index mapping: fileId -> matrix index
+    id_index = {fid: i for i, fid in enumerate(file_ids)}
+
+    # initialise zero matrix
+    mat = [[0] * n for _ in range(n)]
+
+    for cc in clone_classes:
+        # restrict to files from this class that are in file_df
+        class_fids = sorted({m["fileId"] for m in cc["members"] if m["fileId"] in id_index})
+        if len(class_fids) < 2:
+            continue
+
+        # for every pair of files in this class, accumulate a weight
+        for i, j in itertools.combinations(class_fids, 2):
+            # weight: total LOC of members in these two files within this class
+            weight = sum(
+                m.get("loc", m["endLine"] - m["beginLine"] + 1)
+                for m in cc["members"]
+                if m["fileId"] in (i, j)
+            )
+            ii, jj = id_index[i], id_index[j]
+            mat[ii][jj] += weight
+            mat[jj][ii] += weight  # symmetric
+
+    names = [id_to_short[fid] for fid in file_ids]
+    df = pd.DataFrame(mat, index=names, columns=names)
+    return df
