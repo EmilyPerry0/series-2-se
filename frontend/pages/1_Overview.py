@@ -1,46 +1,50 @@
+# frontend/pages/1_Overview.py
 import streamlit as st
 from pathlib import Path
-import pandas as pd
 import plotly.express as px
+
 from data_loader import load_clone_data
-from data_stats import enrich_clone_classes, compute_file_stats, build_clone_class_df
+from data_stats import enrich_clone_classes, compute_file_stats, build_treemap_nodes, build_file_coupling_matrix
+from utils import choose_dataset
 
 
-# ---------- PATHS ----------
-ROOT_DIR = Path(__file__).parent.parent.parent
-DATA_DIR = ROOT_DIR / "data"
 
 st.title("System-level Clone Overview")
 
-if "json_path" not in st.session_state:
-    st.warning("No dataset selected. Go to the **Home** page and pick a JSON file.")
-    st.stop()
+# ---------- Dataset selection ----------
+st.sidebar.header("Dataset")
+json_path = choose_dataset()
 
-json_path = Path(st.session_state["json_path"])
-
-# ---------- DATA LOADING ----------
 project, files, clone_classes = load_clone_data(json_path)
 clone_classes = enrich_clone_classes(clone_classes)
-file_df = compute_file_stats(files, clone_classes)
-class_df = build_clone_class_df(clone_classes)
 
+# type filter for file-level stats
+available_types = sorted({cc.get("type", "Unknown") for cc in clone_classes})
+selected_types = st.sidebar.multiselect(
+    "Include clone types (for file overview)",
+    options=available_types,
+    default=available_types,
+)
 
-# ---------- STREAMLIT CONFIG ----------
-st.set_page_config(page_title="Clone Visualisation", layout="wide")
+filtered_cc_for_files = [
+    cc for cc in clone_classes if cc.get("type", "Unknown") in selected_types
+]
+
+file_df = compute_file_stats(files, filtered_cc_for_files)
+
 st.caption(f"Project: **{project}** | JSON: `{json_path.name}`")
 
-
-
-
+# ---------- Top metrics ----------
 total_files = len(file_df)
-total_clone_classes = len(class_df)
+total_clone_classes = len(filtered_cc_for_files)
 total_cloned_loc = int(file_df["totalClonedLOC"].sum())
 
 col1, col2, col3 = st.columns(3)
 col1.metric("Files with clones", total_files)
-col2.metric("Clone classes (total)", total_clone_classes)
+col2.metric("Clone classes (selected types)", total_clone_classes)
 col3.metric("Total cloned LOC (sum over files)", total_cloned_loc)
 
+# ---------- File filters ----------
 st.sidebar.header("Filters (files overview)")
 
 search_text = st.sidebar.text_input(
@@ -63,25 +67,25 @@ min_classes = st.sidebar.number_input(
     step=1,
 )
 
-max_files = len(file_df)
+if file_df.empty:
+    st.warning("No files contain clones of the selected types.")
+    st.stop()
 
-if max_files <= 1:
-    st.sidebar.info("Only one file contains clones — showing all of them.")
-    top_n = max_files   # 0 or 1
-else:
-    top_n = st.sidebar.slider(
-        "Show top N files (by cloned LOC)",
-        min_value=1,
-        max_value=min(50, max_files),
-        value=min(10, max_files),
-    )
+top_n = st.sidebar.slider(
+    "Show top N files (by cloned LOC)",
+    min_value=0,
+    max_value=min(50, len(file_df)),
+    value=min(10, len(file_df)),
+)
 
-
+# ---------- Apply filters ----------
 filtered_files = file_df.copy()
 
 if search_text:
     s = search_text.lower()
-    filtered_files = filtered_files[filtered_files["shortPath"].str.lower().str.contains(s)]
+    filtered_files = filtered_files[
+        filtered_files["shortPath"].str.lower().str.contains(s)
+    ]
 
 filtered_files = filtered_files[
     (filtered_files["totalClonedLOC"] >= min_loc)
@@ -90,41 +94,65 @@ filtered_files = filtered_files[
 
 if filtered_files.empty:
     st.warning("No files match the current file filters.")
-else:
-    st.subheader("System-level overview: files ordered by cloned LOC")
+    st.stop()
 
-    filtered_sorted = filtered_files.sort_values(
-        by="totalClonedLOC", ascending=False
-    ).head(top_n)
+st.caption(
+    f"Showing {len(filtered_files)} / {len(file_df)} files (after filters)."
+)
 
-    fig = px.bar(
-        filtered_sorted,
-        x="shortPath",
-        y="totalClonedLOC",
-        hover_data=["path", "numCloneClasses"],
-        labels={
+# ---------- Bar chart ----------
+st.subheader("Files ordered by cloned LOC")
+
+filtered_sorted = filtered_files.sort_values(
+    by="totalClonedLOC", ascending=False
+).head(top_n)
+
+fig = px.bar(
+    filtered_sorted,
+    x="shortPath",
+    y="totalClonedLOC",
+    hover_data=["path", "numCloneClasses"],
+    labels={
+        "shortPath": "File",
+        "totalClonedLOC": "Cloned LOC",
+        "numCloneClasses": "#Clone classes",
+    },
+)
+fig.update_layout(
+    xaxis_tickangle=-45,
+    margin=dict(l=10, r=10, t=30, b=100),
+)
+
+st.plotly_chart(fig)
+
+# ---------- Table ----------
+st.subheader("File-level clone statistics")
+
+st.dataframe(
+    filtered_sorted[
+        ["fileId", "shortPath", "totalClonedLOC", "numCloneClasses", "package"]
+    ].rename(
+        columns={
             "shortPath": "File",
             "totalClonedLOC": "Cloned LOC",
             "numCloneClasses": "#Clone classes",
-        },
-    )
-    fig.update_layout(
-        xaxis_tickangle=-45,
-        margin=dict(l=10, r=10, t=30, b=100),
-    )
+        }
+    ),
+    width='stretch',
+    hide_index=True,
+)
 
-    st.plotly_chart(fig, use_container_width=True)
+# ---------- Treemap ----------
+st.markdown("---")
+st.subheader("Project structure treemap (cloned LOC per file)")
 
-    st.dataframe(
-        filtered_sorted[
-            ["fileId", "shortPath", "totalClonedLOC", "numCloneClasses", "package"]
-        ].rename(
-            columns={
-                "shortPath": "File",
-                "totalClonedLOC": "Cloned LOC",
-                "numCloneClasses": "#Clone classes",
-            }
-        ),
-        use_container_width=True,
-        hide_index=True,
-    )
+treemap_df = build_treemap_nodes(file_df, project)
+
+fig_treemap = px.treemap(
+    treemap_df,
+    names="label",
+    parents="parent",
+    values="value",
+)
+
+st.plotly_chart(fig_treemap)
