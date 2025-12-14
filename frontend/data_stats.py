@@ -1,6 +1,7 @@
 from pathlib import PurePosixPath
 import pandas as pd
 import itertools
+import numpy as np
 
 
 def enrich_clone_classes(clone_classes: list[dict]) -> list[dict]:
@@ -79,6 +80,24 @@ def compute_file_stats(files: dict[int, str], clone_classes: list[dict]) -> pd.D
 
     return df.reset_index()
 
+def _shorten_filename(name: str, max_len: int = 18) -> str:
+    """
+    Shorten very long file names for axis labels.
+
+    Example:
+      'ExpressionFunctionReturnP1StringAndBinary.java'
+      -> 'Expression…Binary.java'
+    """
+    if len(name) <= max_len:
+        return name
+
+    # keep start and end, replace middle with ellipsis
+    keep = max_len - 1  # one char for ellipsis
+    front = keep // 2
+    back = keep - front
+    return f"{name[:front]}…{name[-back:]}"
+
+
 def build_clone_class_df(clone_classes: list[dict]) -> pd.DataFrame:
     """
     Turn the enriched clone_classes list into a DataFrame for UI:
@@ -137,3 +156,82 @@ def build_treemap_nodes(file_df: pd.DataFrame, project_name: str) -> pd.DataFram
         })
 
     return pd.DataFrame(rows)
+
+
+def build_file_coupling_matrix(
+    clone_classes: list[dict],
+    file_df: pd.DataFrame,
+    top_k: int = 25,
+    min_shared_loc: int = 1,
+) -> pd.DataFrame:
+    """
+    Build a symmetric matrix where cell (i,j) = total cloned LOC shared
+    between file i and file j (over all given clone classes).
+
+    - only keeps files that share at least `min_shared_loc` LOC with someone
+    - sorts files by total shared LOC and keeps the top_k most coupled ones
+
+    Assumes:
+      - enrich_clone_classes() has already run (members have 'loc')
+      - file_df has columns: fileId, shortPath
+    """
+    if file_df.empty:
+        return pd.DataFrame()
+
+    # Map fileId -> shortPath
+    id_to_label = {row.fileId: row.fileName for row in file_df.itertuples()}
+    file_ids = list(id_to_label.keys())
+    n = len(file_ids)
+
+    if n < 2:
+        # Nothing interesting to show
+        return pd.DataFrame()
+
+    id_index = {fid: i for i, fid in enumerate(file_ids)}
+
+    # Build full NxN matrix
+    mat = np.zeros((n, n), dtype=int)
+
+    for cc in clone_classes:
+        # Consider only files in this class that appear in file_df
+        class_fids = sorted(
+            {m["fileId"] for m in cc["members"] if m["fileId"] in id_index}
+        )
+        if len(class_fids) < 2:
+            continue
+
+        # For every pair of files, accumulate shared LOC
+        for i, j in itertools.combinations(class_fids, 2):
+            weight = sum(
+                m.get("loc", m["endLine"] - m["beginLine"] + 1)
+                for m in cc["members"]
+                if m["fileId"] in (i, j)
+            )
+            ii, jj = id_index[i], id_index[j]
+            mat[ii, jj] += weight
+            mat[jj, ii] += weight  # symmetric
+
+    # --- remove files that don't share any LOC with others ---
+    row_sums = mat.sum(axis=1)
+    nonzero_indices = [
+        i for i, s in enumerate(row_sums) if s >= min_shared_loc
+    ]
+
+    if not nonzero_indices:
+        # no cross-file clones at all
+        return pd.DataFrame()
+
+    # --- keep only the top_k most "coupled" files ---
+    nonzero_indices.sort(key=lambda i: row_sums[i], reverse=True)
+    nonzero_indices = nonzero_indices[:top_k]
+
+    mat2 = mat[nonzero_indices][:, nonzero_indices]
+    full_names = [row.fileName for row in file_df.itertuples()]
+    # map index -> label (shortened name)
+    labels = [
+        file_df[file_df["fileId"] == file_ids[i]]["fileName"].iloc[0]
+        for i in nonzero_indices
+    ]
+
+    df = pd.DataFrame(mat2, index=labels, columns=labels)
+    return df

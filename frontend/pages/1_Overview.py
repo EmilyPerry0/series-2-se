@@ -4,7 +4,7 @@ from pathlib import Path
 import plotly.express as px
 
 from data_loader import load_clone_data
-from data_stats import enrich_clone_classes, compute_file_stats, build_treemap_nodes, build_file_coupling_matrix
+from data_stats import enrich_clone_classes, compute_file_stats, build_treemap_nodes, build_file_coupling_matrix, _shorten_filename
 from utils import choose_dataset
 
 
@@ -156,3 +156,49 @@ fig_treemap = px.treemap(
 )
 
 st.plotly_chart(fig_treemap)
+
+# ---------- Heatmap ----------
+st.markdown("---")
+st.subheader("File–file clone coupling (heatmap)")
+
+coupling_df = build_file_coupling_matrix(
+    filtered_cc_for_files,
+    file_df,
+    top_k=25,
+    min_shared_loc=2 # ignore 1-line overlaps
+)
+
+if not coupling_df.empty and (coupling_df.values != 0).any():
+    fig_coupling = px.imshow(
+        coupling_df,
+        labels=dict(x="File", y="File", color="Cloned LOC shared"),
+    )
+
+    # full names from the DataFrame (used for hover)
+    full_names = list(coupling_df.index)
+
+    # shortened labels for the axes
+    short_names = [_shorten_filename(name, max_len=18) for name in full_names]
+
+    # px.imshow uses 0..N-1 as coordinates internally
+    tick_vals = list(range(len(short_names)))
+
+    fig_coupling.update_xaxes(
+        ticktext=short_names,
+        tickvals=tick_vals,
+        tickangle=-60,
+    )
+    fig_coupling.update_yaxes(
+        ticktext=short_names,
+        tickvals=tick_vals,
+    )
+
+    fig_coupling.update_layout(
+        width=800,
+        height=600,
+        margin=dict(l=80, r=20, t=40, b=120),
+    )
+
+    st.plotly_chart(fig_coupling, use_container_width=True)
+else:
+    st.info("No cross-file clones to show for the current filters.")
